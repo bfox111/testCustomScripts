@@ -1,0 +1,67 @@
+{
+    "tests": [
+      {
+          "testName": "Disable Y1564 ",
+          "testDescription": "Disable Y.1564 test between CE-1 and CE-2.  CE-2 is the reflector.",
+          "testType": "SAT",
+
+          "customScripts": [
+              {
+                "deviceName": "CE-2",
+                "cmdFile": "DisableReflector",
+                "scriptAttributes": {
+                  "UNI_PORT": "5"
+              }
+              },
+                            {
+                "deviceName": "CE-1",
+                "cmdFile": "DisableY1564Tagged",
+                "scriptAttributes": {
+                  "UNI_PORT": "5"
+              }
+              }
+
+          ],
+          "sleepTime": 1,
+          "verificationCommands": {
+              "CE-2": [
+                  "show run config section sat"
+              ],
+              "CE-1": [
+                  "show run config section sat"
+              ]
+          }
+      },
+      {
+          "testName": "Delete Y1564 ",
+          "testDescription": "Delete Y.1564 test between CE-1 and CE-2.  CE-2 is the reflector.",
+          "testType": "SAT",
+
+          "customScripts": [
+              {
+                "deviceName": "CE-2",
+                "cmdFile": "RemoveReflector",
+                "scriptAttributes": {
+              }
+              },
+                            {
+                "deviceName": "CE-1",
+                "cmdFile": "Y1564RemoveTagged",
+                "scriptAttributes": {
+              }
+              }
+
+          ],
+          "sleepTime": 1,
+          "verificationCommands": {
+              "CE-2": [
+                  "show run config section sat"
+              ],
+              "CE-1": [
+                  "show run config section sat"
+              ]
+          }
+      }
+     
+    ]
+ }

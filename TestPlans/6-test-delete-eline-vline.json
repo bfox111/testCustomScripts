@@ -1,0 +1,86 @@
+{
+    "tests": [
+            {
+          "testName": "Delete VLINE ",
+          "testDescription": "Delete VLINE test between PE-6x and PE-10x.",
+          "testType": "SAT",
+
+          "customScripts": [
+              {
+                "deviceName": "PE-6x",
+                "cmdFile": "DeleteVLINE",
+                "scriptAttributes": {
+                  "SVLAN": "50",
+                  "NNI_PORT": "11",
+                  "UNI_PORT": "10",
+                  "SERVICE_NUMBER": "1"
+              }
+              },
+                            {
+                "deviceName": "PE-10x",
+                "cmdFile": "DeleteVLINE",
+                "scriptAttributes": {
+                  "UNI_PORT": "1",
+                  "SVLAN": "50",
+                  "MBPS_CIR": "1000",
+                  "CIRCUIT_NAME": "VLINE50",
+                  "NNI_PORT": "4"
+              }
+              }
+
+          ],
+          "sleepTime": 1,
+          "verificationCommands": {
+              "PE-6x": [
+                  "vlan show"
+              ],
+              "PE-10x": [
+                  "show run config section fps"
+              ]
+          }
+      },
+            {
+          "testName": "Delete ELINE ",
+          "testDescription": "Delete ELINE between CE-1 and CE-2.  ",
+          "testType": "SAT",
+
+          "customScripts": [
+              {
+                "deviceName": "CE-2",
+                "cmdFile": "DeleteELINE",
+                "scriptAttributes": {
+                  "UNI_PORT": "5",
+                  "SVLAN": "50",
+                    "CIRCUIT_NAME": "ELINE50",
+		    "MD_LEVEL": "5",
+                  "NNI_PORT": "1"
+              }
+              },
+                            {
+                "deviceName": "CE-1",
+                "cmdFile": "DeleteELINE",
+                "scriptAttributes": {
+                  "UNI_PORT": "5",
+                  "SVLAN": "50",
+                    "CIRCUIT_NAME": "ELINE50",
+		    "MD_LEVEL" : "5",
+                  "NNI_PORT": "1"
+            }
+              }
+
+          ],
+          "sleepTime": 1,
+          "verificationCommands": {
+              "CE-2": [
+                  "show run config section fps"
+              ],
+              "CE-1": [
+                  "show run config section fps"
+              ]
+          }
+      }
+
+
+     
+    ]
+ }

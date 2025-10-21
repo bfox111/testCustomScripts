@@ -1,0 +1,82 @@
+"""
+import sys
+import logging
+from lxml import etree
+from termcolor import colored
+from bs4 import BeautifulSoup as bs
+import xml.dom.minidom
+import re
+from ncclient import manager
+from ncclient.xml_ import to_ele
+from netmiko import ConnectHandler
+
+
+
+   
+def convert_cli_to_netconf(ip, user, passwd, cli):
+
+    commands = cli.splitlines()
+    while("" in commands):
+        commands.remove("")
+
+    net_connect = ConnectHandler(device_type='ciena_saos', host=ip, username=user, password=passwd)
+    net_connect.send_command_timing( 'set session more off')
+     
+    #output = net_connect.send_command_timing( commands.strip('\r\n') , strip_prompt=False, strip_command=False, delay_factor=4)
+    for c in commands:
+        print(c)
+        output = net_connect.send_command_timing(c.strip('\r\n'))
+        print(output)
+        # output = net_connect.send_command_timing(c.strip('\r\n'))
+
+    net_connect.disconnect()
+    
+cmds = { "show cfm delay ",
+        " show logical"}
+
+convert_cli_to_netconf("10.92.44.14", "diag", "ciena123", cmds)
+"""
+
+from netmiko import ConnectHandler
+
+
+
+def execute_cli_commands(ip, username, password, cli_commands):
+    """
+    Executes a list of CLI commands on a device using Netmiko.
+
+    Args:
+        ip (str): IP address of the device.
+        username (str): Username for authentication.
+        password (str): Password for authentication.
+        cli_commands (list): List of CLI commands to execute.
+
+    Returns:
+        None
+    """
+    # Remove empty commands from the list
+    cli_commands = [command.strip() for command in cli_commands if command.strip()]
+
+    # Connect to the device
+    connection = ConnectHandler(device_type='ciena_saos', host=ip, username=username, password=password)
+    
+# Disable session paging and enter configuration mode
+    connection.send_command_timing('set session more off')
+
+    # Execute each command and print the output
+    for command in cli_commands:
+        print(f"Executing: {command}")
+        output = connection.send_command_timing(command)
+        print(f"Output:\n{output}")
+
+    # Disconnect from the device
+    connection.disconnect()
+
+# List of CLI commands to execute
+commands = [
+    "show cfm delay",
+    "show logical"
+]
+
+# Execute the commands on the device
+execute_cli_commands("10.92.44.14", "diag", "ciena123", commands)

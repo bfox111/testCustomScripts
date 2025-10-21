@@ -1,0 +1,385 @@
+{
+    "tests": [
+
+    {
+    "cmdFile": "AddUNIportToELINE",
+    "scriptAttributes": {
+      "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+      "UNI_PORT": "${UNI_PORT}",
+      "NNI_PORT": "${NNI_PORT}",
+      "MBPS_CIR": "${MBPS_CIR}"
+    }
+  },
+  {
+    "cmdFile": "Apply3903BaseConfig",
+    "scriptAttributes": {
+      "IP_ADDRESS": "${IP_ADDRESS}",
+      "IP_MASK": "${IP_MASK}",
+      "IP_GATEWAY": "${IP_GATEWAY}",
+      "HOSTNAME": "${HOSTNAME}",
+      "NTP_SERVER": "${NTP_SERVER}"
+    }
+  },
+  {
+    "cmdFile": "ApplyLP3903BaseCAL",
+    "scriptAttributes": {
+      "HOSTNAME": "${HOSTNAME}",
+      "NTP_SERVER": "${NTP_SERVER}",
+      "MCP_IP_ADDRESS": "${MCP_IP_ADDRESS}"
+    }
+  },
+  {
+    "cmdFile": "ConfigSave",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "DIA",
+    "scriptAttributes": {
+      "SVLAN": "${SVLAN}",
+      "NNI_PORT": "${NNI_PORT}",
+      "UNI_PORT": "${UNI_PORT}",
+      "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+      "MBPS_CIR": "${MBPS_CIR}"
+    }
+  },
+  {
+    "cmdFile": "DeleteAllVlansReflector",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "DeleteELINE",
+    "scriptAttributes": {
+      "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+      "SVLAN": "${SVLAN}",
+      "NNI_PORT": "${NNI_PORT}",
+      "UNI_PORT": "${UNI_PORT}"
+    }
+  },
+  {
+    "cmdFile": "DeleteUntaggedReflector",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "DeleteY1564Untagged",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "ELINE",
+    "scriptAttributes": {
+      "SVLAN": "${SVLAN}",
+      "NNI_PORT": "${NNI_PORT}",
+      "UNI_PORT": "${UNI_PORT}",
+      "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+      "LOCAL_MEP": "${LOCAL_MEP}",
+      "REMOTE_MEP": "${REMOTE_MEP}",
+      "MBPS_CIR": "${MBPS_CIR}"
+    }
+  },
+  {
+    "cmdFile": "TurnOnInactivityTimer",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "KPI-Profs-6x",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "LoopPort",
+    "scriptAttributes": {
+      "PORT": "${PORT}"
+    }
+  },
+  {
+    "cmdFile": "LoopPortOff",
+    "scriptAttributes": {
+      "PORT": "${PORT}"
+    }
+  },
+  {
+    "cmdFile": "ReflectUntagged",
+    "scriptAttributes": {
+      "PORT": "${PORT}"
+    }
+  },
+  {
+    "cmdFile": "ReflectorAllVlans",
+    "scriptAttributes": {
+      "PORT": "${PORT}"
+    }
+  },
+  {
+    "cmdFile": "RemoveUNIportFromELINE",
+    "scriptAttributes": {
+      "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+      "UNI_PORT": "${UNI_PORT}"
+    }
+  },
+  {
+    "cmdFile": "SAT3926",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "SAT3928",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "SetEMIX",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "SetNTPServer",
+    "scriptAttributes": {
+      "NTP_SERVER": "${NTP_SERVER}"
+    }
+  },
+  {
+    "cmdFile": "ShutOffInactivityTimer",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "VLINE",
+    "scriptAttributes": {
+      "SVLAN": "${SVLAN}",
+      "NNI_PORT": "${NNI_PORT}",
+      "UNI_PORT": "${UNI_PORT}",
+      "SERVICE_NUMBER": "${SERVICE_NUMBER}",
+      "MBPS_CIR": "${MBPS_CIR}"
+    }
+  },
+  {
+    "cmdFile": "Y1564Untagged15min",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}",
+      "BANDWIDTH": "${BANDWIDTH}",
+      "DEST_MAC_ADDRESS": "${DEST_MAC_ADDRESS}"
+    }
+  },
+  {
+    "cmdFile": "AddUNIportToELINE",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "ApplyLPBaseCfg",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "ApplyLPBase3984",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "BWModeSetPayload",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "CreateMDs",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "DIA",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}",
+      "MBPS_CIR": "${MBPS_CIR}",
+      "SVLAN": "${SVLAN}",
+      "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+      "NNI_PORT": "${NNI_PORT}"
+    }
+  },
+  {
+    "cmdFile": "DeleteELINE",
+    "scriptAttributes": {
+      "MD_LEVEL": "${MD_LEVEL}",
+      "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+      "UNI_PORT": "${UNI_PORT}",
+      "NNI_PORT": "${NNI_PORT}",
+      "SVLAN": "${SVLAN}"
+    }
+  },
+  {
+    "cmdFile": "DeleteRFC2544Test",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "DisableReflector",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}"
+    }
+  },
+  {
+    "cmdFile": "DisableY1564Untagged",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}"
+    }
+  },
+  {
+    "cmdFile": "ELINE-10x",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "EnrollDevices",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "FacilityLoopback",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "FacilityLoopbackOff",
+    "scriptAttributes": {
+      "PORT": "${PORT}"
+    }
+  },
+  {
+    "cmdFile": "KPI-Profs-10x",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "MTUsize",
+    "scriptAttributes": {
+      "MTU": "${MTU}"
+    }
+  },
+  {
+    "cmdFile": "NTPSetParam",
+    "scriptAttributes": {
+      "NTP_SERVER": "${NTP_SERVER}"
+    }
+  },
+  {
+    "cmdFile": "RFC2544Delete",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "RFC2544SetupTagged",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}",
+      "CVID": "${CVID}",
+      "DST_MAC": "${DST_MAC}",
+      "SRC_IP": "${SRC_IP}",
+      "DST_IP": "${DST_IP}",
+      "FP": "${FP}"
+    }
+  },
+  {
+    "cmdFile": "RFC2544SetupUntagged",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}",
+      "BANDWIDTH_MB": "${BANDWIDTH_MB}",
+      "DST_MAC": "${DST_MAC}",
+      "SRC_IP": "${SRC_IP}",
+      "DST_IP": "${DST_IP}",
+      "FP": "${FP}"
+    }
+  },
+  {
+    "cmdFile": "RFC2544Start",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}"
+    }
+  },
+  {
+    "cmdFile": "RFC2544Stop",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}"
+    }
+  },
+  {
+    "cmdFile": "ReflectSAT",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "RemoveNTPServer",
+    "scriptAttributes": {
+      "NTP_SERVER": "${NTP_SERVER}"
+    }
+  },
+  {
+    "cmdFile": "RemoveReflector",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "RemoveUNIportFromELINE",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}",
+      "CIRCUIT_NAME": "${CIRCUIT_NAME}"
+    }
+  },
+  {
+    "cmdFile": "RemoveY1564Untagged",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "SAT3928",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "SetEMIX",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "SetKPI",
+    "scriptAttributes": {
+      "THROUGHPUT_PERCENT": "${THROUGHPUT_PERCENT}",
+      "FRAMELOSS": "${FRAMELOSS}",
+      "LATENCY": "${LATENCY}",
+      "JITTER": "${JITTER}"
+    }
+  },
+  {
+    "cmdFile": "TerminalLoopback",
+    "scriptAttributes": {
+      "PORT": "${PORT}"
+    }
+  },
+  {
+    "cmdFile": "TerminalLoopbackOff",
+    "scriptAttributes": {
+      "PORT": "${PORT}"
+    }
+  },
+  {
+    "cmdFile": "VLINE",
+    "scriptAttributes": {
+      "UNI_PORT": "${UNI_PORT}",
+      "SVLAN": "${SVLAN}",
+      "MBPS_CIR": "${MBPS_CIR}",
+      "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+      "NNI_PORT": "${NNI_PORT}",
+      "LOCAL_MEP": "${LOCAL_MEP}",
+      "REMOTE_MEP": "${REMOTE_MEP}"
+    }
+  },
+  {
+    "cmdFile": "Y1564OnceRemove",
+    "scriptAttributes": {}
+  },
+  {
+    "cmdFile": "Y1564OnceSetup",
+    "scriptAttributes": {
+      "PORT": "${PORT}",
+      "DEST_MAC": "${DEST_MAC}",
+      "SRC_IP_ADDR": "${SRC_IP_ADDR}",
+      "DST_IP_ADDR": "${DST_IP_ADDR}",
+      "FLOW_PT_ID": "${FLOW_PT_ID}"
+    }
+  },
+  {
+    "cmdFile": "Y1564Setup15mTagged",
+    "scriptAttributes": {
+      "PORT": "${PORT}",
+      "BANDWIDTH_MBS": "${BANDWIDTH_MBS}",
+      "DEST_MAC": "${DEST_MAC}",
+      "FLOW_PT_GEN_PORT": "${FLOW_PT_GEN_PORT}",
+      "CVID": "${CVID}"
+    }
+  },
+  {
+    "cmdFile": "Y1564Setup15mUntagged",
+    "scriptAttributes": {
+      "PORT": "${PORT}",
+      "BANDWIDTH_MBS": "${BANDWIDTH_MBS}",
+      "DEST_MAC": "${DEST_MAC}",
+      "FLOW_PT_GEN_PORT": "${FLOW_PT_GEN_PORT}"
+    }
+  }
+  ]
+}

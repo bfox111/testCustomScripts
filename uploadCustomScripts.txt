@@ -1,0 +1,82 @@
+SAT3928,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/SAT3928.txt,,
+TurnOnInactivityTimer,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/EnableInactivityTimer.txt,,
+ShutOffInactivityTimer,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/ShutOffInactivityTimer.txt,Turn off inactivity timer
+ApplyLP3903BaseCAL,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/ApplyLP3903BaseCAL.txt,,
+ConfigSave,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/ConfigSave.txt,,
+KPI-Profs-6x,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/KPI-Profs-6x.txt,,
+
+LoopPort,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/LoopPort.txt,,
+LoopPortOff,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/LoopPortOff.txt,,
+SetEMIX,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/SetEmix3903.txt,,
+SetNTPServer,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/SetNTPServer.txt,,
+
+ELINE,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/ELINE.txt,Set up ELINE/EPL service with CFM
+AddUNIportToELINE,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/AddUNIportToELINE.txt,Add UNI port to existing EPL service
+RemoveUNIportFromELINE,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/RemoveUNIportFromELINE.txt,Remove UNI port from existing EPL service
+DeleteELINE,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/DeleteELINE.txt,Delete ELINE/EPL service with CFM
+
+ReflectUntagged,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/ReflectUntagged.txt,,
+ReflectorAllVlans,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/ReflectorAllVlans.txt,,
+DeleteAllVlansReflector,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/DeleteAllVlansReflector.txt,,
+DeleteUntaggedReflector,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/DeleteUntaggedReflector.txt,,
+
+Y1564Untagged15min,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/Y1564Untagged15min.txt,,
+DeleteY1564Untagged,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/DeleteY1564Untagged.txt,Delete Y1564 Untagged test
+
+VLINE,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/VLINE.txt,,
+DeleteVLINE,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/DeleteVLINE.txt,,
+
+DIA,PN6x,cli,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/6x/DIA.txt,,
+
+
+ApplyLPBaseCfg,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/ApplyLP3924BaseCfg.txt,,
+ApplyLPBase3984,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/ApplyLP3924BaseCfg3984.txt,,
+BWModeSetPayload,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/BWModeSetPayload.txt,,
+CreateMDs,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/CreateMDs.txt,,
+EnrollDevices,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/EnrollDevices.txt,,
+FacilityLoopback,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/FacilityLoopback.txt,,
+FacilityLoopbackOff,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/FacilityLoopbackOff.txt,,
+KPI-Profs-10x,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/KPI-Profs-10x.txt,,
+MTUsize,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/MTUsize.txt,,
+NTPSetParam,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/NTPSetParam.txt,,
+RemoveNTPServer,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/RemoveNTPServer.txt,,
+RemoveReflector,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/RemoveReflector.txt,,
+SAT3928,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/SAT3928.txt,,
+SetEMIX,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/SetEMIX3924.txt,,
+SetKPI,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/SetKPI.txt,,
+TerminalLoopback,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/TerminalLoopback.txt,,
+TerminalLoopbackOff,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/TerminalLoopbackOff.txt,,
+
+DIA,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/DIA.txt,,
+
+ELINE-10x,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/ELINE.txt,,
+AddUNIportToELINE,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/AddUNIportToELINE.txt,,
+RemoveUNIportFromELINE,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/RemoveUNIportFromELINE.txt,,
+DeleteELINE,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/DeleteELINE.txt,Set up ELINE/EPL service with CFM,
+
+
+ReflectTaggedAndUntagged,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/ReflectTaggedAndUntagged.txt,Reflect all tagged and untagged traffic sent to shared-mac of sh system mac,
+DisableReflector,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/DisableReflector.txt,,
+
+
+Y1564OnceRemove,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/Y1564OnceRemove.txt,,
+Y1564OnceSetup,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/Y1564OnceSetup.txt,,
+Y1564Setup15mTagged,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/Y1564Setup15mTagged.txt,,
+Y1564Setup15mUntagged,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/Y1564Setup15mUntagged.txt,,
+Y1564UntaggedStart,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/Y1564UntaggedStart.txt,Start a Y1564 Untagged test,
+Y1564UntaggedStop,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/Y1564UntaggedStop.txt,Stop a Y1564 Untagged test,
+RemoveY1564Untagged,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/RemoveY1564Untagged.txt,,
+DisableY1564Untagged,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/DisableY1564Untagged.txt,,
+
+RFC2544SetupTagged,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/RFC2544SetupTagged.txt,,
+RFC2544SetupUntagged,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/RFC2544SetupUntagged.txt,,
+
+RFC2544Start,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/RFC2544Start.txt,,
+RFC2544Stop,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/RFC2544Stop.txt,,
+
+DeleteRFC2544Test,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/DeleteRFC2544Test.txt,,
+RFC2544Delete,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/RFC2544Delete.txt,,
+
+
+VLINE,PN10x,netconf,/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/VLINE.txt,,
+

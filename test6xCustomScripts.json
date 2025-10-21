@@ -1,0 +1,184 @@
+{
+    "tests": [
+              {
+            "testName": "ShutOffInactivityTimer",
+            "testDescription": "ShutOffInactivityTimer.",
+            "testType": "Setup",
+
+            "customScripts": [
+                 {
+                  "deviceName": "PE-6x",
+                  "cmdFile": "ShutOffInactivityTimer",
+                  "scriptAttributes": {
+                  }
+                }
+
+           ],
+           "sleepTime": 1,
+           "verificationCommands": {
+                "PE-6x": [
+                    "config search string inactivity"
+                ]
+            }
+        },
+              {
+            "testName": "Turn SAT ON on 3928",
+            "testDescription": "Turn SAT ON on 3928.",
+            "testType": "Setup",
+
+            "customScripts": [
+                {
+                  "deviceName": "PE-6x",
+                  "cmdFile": "SAT3928",
+                  "scriptAttributes": {
+                  }
+                }
+
+           ],
+           "sleepTime": 1,
+           "verificationCommands": {
+                "PE-6x": [
+                    "config search string oam"
+                ]
+            }
+        },
+
+        {
+            "testName": "Initial Setup",
+            "testDescription": "This test sets up the 4 devices with the LP base config.",
+            "testType": "Setup",
+
+            "customScripts": [
+                {
+                  "deviceName": "PE-6x",
+                  "cmdFile": "ApplyLP3903BaseCAL",
+                  "scriptAttributes": {
+                        "NTP_SERVER": "10.92.44.130",
+                        "HOSTNAME": "PE-6x",
+                        "MCP_IP_ADDRESS": "10.1.75.236"
+                  }
+                },
+                {
+                  "deviceName": "PE-10x",
+                  "cmdFile": "ApplyLPBaseCfg",
+                  "scriptAttributes": {
+                  }
+                },
+                 {
+                  "deviceName": "CE-1",
+                  "cmdFile": "ApplyLPBase3984",
+                  "scriptAttributes": {
+                  }
+                },
+                {
+                  "deviceName": "CE-2",
+                  "cmdFile": "ApplyLPBase3984",
+                  "scriptAttributes": {}
+                 }
+           ],
+           "sleepTime": 1,
+           "verificationCommands": {
+                "PE-6x": [
+                    "l2-cft show profile CFT",
+                    "config search string max-frame-size",
+                    "user show",
+                    "port show"
+                ],
+                "PE-10x": [
+                    "show license",
+                    "show logicalstate",
+                    "show l2cp-profiles"
+                ],
+                "CE-1": [
+                    "show license",
+                    "show logical state",
+                    "show l2cp-profiles"
+                ],
+                "CE-2": [
+                    "show license",
+                    "show logical state",
+                    "show l2cp-profiles"
+                ]
+            }
+        },
+       {
+          "testName": "ELINE",
+          "testDescription": "Setup ELINE between CE-1 and CE-2.  Set up VLINE on PE-6x and PE-10x. Run Y1564 test.",
+          "testType": "ELINE",
+
+          "customScripts": [
+              {
+                "deviceName": "PE-6x",
+                "cmdFile": "VLINE",
+                "scriptAttributes": {
+                  "SVLAN": "50",
+                  "NNI_PORT": "11",
+                  "UNI_PORT": "10",
+                  "SERVICE_NUMBER": "1",
+                  "MBPS_CIR": "1000"
+                }
+              },
+              {
+                "deviceName": "PE-10x",
+                "cmdFile": "VLINE",
+                "scriptAttributes": {
+                  "UNI_PORT": "1",
+                  "SVLAN": "50",
+                  "MBPS_CIR": "1000",
+                  "CIRCUIT_NAME": "VLINE50",
+                  "NNI_PORT": "4",
+                  "LOCAL_MEP": "100",
+                  "REMOTE_MEP": "101"               
+                }
+              },
+              {
+                "deviceName": "CE-1",
+                "cmdFile": "ELINE-10x",
+                "scriptAttributes": {
+                  "UNI_PORT": "5",
+                  "SVLAN": "50",
+                  "MBPS_CIR": "1000",
+                  "MD_LEVEL": "5",
+                  "CIRCUIT_NAME": "ELINE50",
+                  "NNI_PORT": "1",
+                  "LOCAL_MEP": "1",
+                  "REMOTE_MEP": "2"
+                }
+              },
+              {
+                "deviceName": "CE-2",
+                "cmdFile": "ELINE-10x",
+                "scriptAttributes": {
+                  "UNI_PORT": "5",
+                  "SVLAN": "50",
+                  "MBPS_CIR": "1000",
+                  "CIRCUIT_NAME": "ELINE50",
+                  "NNI_PORT": "1",
+                  "MD_LEVEL": "5",
+                  "LOCAL_MEP": "2",
+                  "REMOTE_MEP": "1"
+                }
+              }
+          ],
+          "sleepTime": 5,
+          "verificationCommands": {
+              "PE-6x": [
+                  "vlan show",
+                  "port show"
+              ],
+              "PE-10x": [
+                  "show cfm delay",
+                  "show run config section fds"
+              ],
+              "CE-1": [
+                  "show cfm delay",
+                  "show run config section fds"
+              ],
+              "CE-2": [
+                  "show cfm delay",
+                  "show run config section fds"
+              ]
+          }
+      }
+    ]
+ }

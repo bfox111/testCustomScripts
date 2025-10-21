@@ -1,0 +1,59 @@
+{
+    "tests": [
+      {
+          "testName": "Disable Y1564 ",
+          "testDescription": "Disable Y.1564 test between PE-6x and PE-10x.  PE-10x is the reflector.",
+          "testType": "SAT",
+
+          "customScripts": [
+              {
+                "deviceName": "PE-10x",
+                "cmdFile": "DisableReflector",
+                "scriptAttributes": {
+                  "UNI_PORT": "5"
+              }
+              }
+          ],
+          "sleepTime": 1,
+          "verificationCommands": {
+              "PE-10x": [
+                  "show run config section sat"
+              ],
+              "PE-6x": [
+                  "config search string bench"
+              ]
+          }
+      },
+      {
+          "testName": "Delete Y1564 ",
+          "testDescription": "Delete Y.1564 test between PE-6x and PE-10x.  PE-10x is the reflector.",
+          "testType": "SAT",
+
+          "customScripts": [
+              {
+                "deviceName": "PE-10x",
+                "cmdFile": "RemoveReflector",
+                "scriptAttributes": {
+              }
+              },
+                            {
+                "deviceName": "PE-6x",
+                "cmdFile": "DeleteY1564Untagged",
+                "scriptAttributes": {
+              }
+              }
+
+          ],
+          "sleepTime": 1,
+          "verificationCommands": {
+              "PE-10x": [
+                  "show run config section sat"
+              ],
+              "PE-6x": [
+                  "config search string bench"
+              ]
+          }
+      }
+     
+    ]
+ }

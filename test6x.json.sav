@@ -1,0 +1,296 @@
+{
+    "tests": [
+        {
+            "testName": "Add UNI Port to ELINE",
+            "testDescription": "Adds a UNI port to an ELINE circuit.",
+            "testType": "Configuration",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "AddUNIportToELINE",
+                    "scriptAttributes": {
+                        "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+                        "UNI_PORT": "${UNI_PORT}",
+                        "NNI_PORT": "${NNI_PORT}",
+                        "MBPS_CIR": "${MBPS_CIR}"
+                    }
+                }
+            ],
+            "sleepTime": 2,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration circuit ${CIRCUIT_NAME}"
+                ]
+            }
+        },
+        {
+            "testName": "Apply LP Base CAL",
+            "testDescription": "Applies LP base CAL configuration.",
+            "testType": "Setup",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "ApplyLP3903BaseCAL",
+                    "scriptAttributes": {
+                        "HOSTNAME": "${HOSTNAME}",
+                        "NTP_SERVER": "${NTP_SERVER}",
+                        "MCP_IP_ADDRESS": "${MCP_IP_ADDRESS}"
+                    }
+                }
+            ],
+            "sleepTime": 1,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration hostname",
+                    "show configuration ntp"
+                ]
+            }
+        },
+        {
+            "testName": "Save Configuration",
+            "testDescription": "Saves the current configuration.",
+            "testType": "Maintenance",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "ConfigSave",
+                    "scriptAttributes": {}
+                }
+            ],
+            "sleepTime": 1,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show saved configuration"
+                ]
+            }
+        },
+        {
+            "testName": "Setup DIA Service",
+            "testDescription": "Configures DIA service on the device.",
+            "testType": "Configuration",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "DIA",
+                    "scriptAttributes": {
+                        "SVLAN": "${SVLAN}",
+                        "NNI_PORT": "${NNI_PORT}",
+                        "UNI_PORT": "${UNI_PORT}",
+                        "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+                        "MBPS_CIR": "${MBPS_CIR}"
+                    }
+                }
+            ],
+            "sleepTime": 2,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration service ${CIRCUIT_NAME}"
+                ]
+            }
+        },
+        {
+            "testName": "Delete All VLANs Reflector",
+            "testDescription": "Deletes all VLANs from reflector configuration.",
+            "testType": "Cleanup",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "DeleteAllVlansReflector",
+                    "scriptAttributes": {}
+                }
+            ],
+            "sleepTime": 1,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration vlan"
+                ]
+            }
+        },
+        {
+            "testName": "Delete ELINE Circuit",
+            "testDescription": "Deletes an ELINE circuit configuration.",
+            "testType": "Cleanup",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "DeleteELINE",
+                    "scriptAttributes": {
+                        "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+                        "SVLAN": "${SVLAN}",
+                        "NNI_PORT": "${NNI_PORT}",
+                        "UNI_PORT": "${UNI_PORT}"
+                    }
+                }
+            ],
+            "sleepTime": 2,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration circuit ${CIRCUIT_NAME}"
+                ]
+            }
+        },
+        {
+            "testName": "Turn On Inactivity Timer",
+            "testDescription": "Enables inactivity timer on the device.",
+            "testType": "Maintenance",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "TurnOnInactivityTimer",
+                    "scriptAttributes": {}
+                }
+            ],
+            "sleepTime": 1,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration inactivity timer"
+                ]
+            }
+        },
+        {
+            "testName": "Loop Port",
+            "testDescription": "Loops a specified port.",
+            "testType": "Testing",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "LoopPort",
+                    "scriptAttributes": {
+                        "PORT": "${PORT}"
+                    }
+                }
+            ],
+            "sleepTime": 1,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show port loop status ${PORT}"
+                ]
+            }
+        },
+        {
+            "testName": "Remove UNI Port from ELINE",
+            "testDescription": "Removes a UNI port from an ELINE circuit.",
+            "testType": "Cleanup",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "RemoveUNIportFromELINE",
+                    "scriptAttributes": {
+                        "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+                        "UNI_PORT": "${UNI_PORT}"
+                    }
+                }
+            ],
+            "sleepTime": 2,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration circuit ${CIRCUIT_NAME}"
+                ]
+            }
+        },
+        {
+            "testName": "Set NTP Server",
+            "testDescription": "Configures NTP server settings.",
+            "testType": "Configuration",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "SetNTPServer",
+                    "scriptAttributes": {
+                        "NTP_SERVER": "${NTP_SERVER}"
+                    }
+                }
+            ],
+            "sleepTime": 1,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration ntp"
+                ]
+            }
+        },
+        {
+            "testName": "Delete RFC2544 Test",
+            "testDescription": "Deletes RFC2544 test configuration.",
+            "testType": "Cleanup",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "DeleteRFC2544Test",
+                    "scriptAttributes": {}
+                }
+            ],
+            "sleepTime": 1,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration rfc2544"
+                ]
+            }
+        },
+        {
+            "testName": "Facility Loopback Off",
+            "testDescription": "Disables facility loopback on a port.",
+            "testType": "Testing",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "FacilityLoopbackOff",
+                    "scriptAttributes": {
+                        "PORT": "${PORT}"
+                    }
+                }
+            ],
+            "sleepTime": 1,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show loopback status ${PORT}"
+                ]
+            }
+        },
+        {
+            "testName": "Setup VLINE Service",
+            "testDescription": "Configures VLINE service on the device.",
+            "testType": "Configuration",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "VLINE",
+                    "scriptAttributes": {
+                        "SVLAN": "${SVLAN}",
+                        "NNI_PORT": "${NNI_PORT}",
+                        "UNI_PORT": "${UNI_PORT}",
+                        "SERVICE_NUMBER": "${SERVICE_NUMBER}",
+                        "MBPS_CIR": "${MBPS_CIR}"
+                    }
+                }
+            ],
+            "sleepTime": 2,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show configuration service ${SERVICE_NUMBER}"
+                ]
+            }
+        },
+        {
+            "testName": "Setup Y1564 Test",
+            "testDescription": "Configures Y1564 untagged test for 15 minutes.",
+            "testType": "Testing",
+            "customScripts": [
+                {
+                    "deviceName": "PE-6x",
+                    "cmdFile": "Y1564Untagged15min",
+                    "scriptAttributes": {
+                        "UNI_PORT": "${UNI_PORT}",
+                        "BANDWIDTH": "${BANDWIDTH}",
+                        "DEST_MAC_ADDRESS": "${DEST_MAC_ADDRESS}"
+                    }
+                }
+            ],
+            "sleepTime": 1,
+            "verificationCommands": {
+                "PE-6x": [
+                    "show test configuration y1564"
+                ]
+            }
+        }
+    ]
+}

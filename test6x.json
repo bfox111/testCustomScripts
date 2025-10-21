@@ -1,0 +1,1121 @@
+{
+  "tests": [
+
+    {
+      "testName": "0: Apply LP 3903 Base CAL",
+      "testDescription": "Applies a base CAL (Converged Access License) configuration to a 3903 device.",
+      "testType": "Setup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ApplyLP3903BaseCAL",
+          "scriptAttributes": {
+            "HOSTNAME": "PE-6x",
+            "NTP_SERVER": "10.92.44.130",
+            "MCP_IP_ADDRESS": "10.75.1.227"
+          }
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "show host name",
+          "ntp client show"
+        ]
+      }
+    },
+    {
+      "testName": "Save Configuration",
+      "testDescription": "Saves the running configuration to the startup configuration.",
+      "testType": "Maintenance",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ConfigSave",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 10,
+      "verificationCommands": {
+        "PE-6x": [
+          "configuration show status"
+        ]
+      }
+    },
+    {
+      "testName": "Turn On Inactivity Timer",
+      "testDescription": "Enables the session inactivity timer.",
+      "testType": "Maintenance",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "TurnOnInactivityTimer",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "config search string inact"
+        ]
+      }
+    },
+    {
+      "testName": "Set NTP Server",
+      "testDescription": "Configures the IP address of the Network Time Protocol (NTP) server.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "SetNTPServer",
+          "scriptAttributes": {
+            "NTP_SERVER": "10.92.44.131"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "ntp client show"
+        ]
+      }
+    },
+    {
+      "testName": "Shut Off Inactivity Timer",
+      "testDescription": "Disables the session inactivity timer.",
+      "testType": "Maintenance",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ShutOffInactivityTimer",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "config search string inact"
+        ]
+      }
+    },
+    {
+      "testName": "Apply KPI Profiles for 6x",
+      "testDescription": "Applies predefined Key Performance Indicator (KPI) profiles for 6x series devices.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "KPI-Profs-6x",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat kpi-profile show"
+        ]
+      }
+    },
+    {
+      "testName": "Run SAT for 3928",
+      "testDescription": "Executes a Service Activation Test (SAT) routine for a 3928 device.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "SAT3928",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat show"
+        ]
+      }
+    },
+    {
+      "testName": "Set EMIX Profile",
+      "testDescription": "Sets the test frame size to the EMIX (Ethernet Mix) traffic profile.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "SetEMIX",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat generator show"
+        ]
+      }
+    },
+    {
+      "testName": "Create DIA Service",
+      "testDescription": "Creates a Dedicated Internet Access (DIA) service.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "DIA",
+          "scriptAttributes": {
+            "SVLAN": "${SVLAN}",
+            "NNI_PORT": "${NNI_PORT}",
+            "UNI_PORT": "${UNI_PORT}",
+            "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+            "MBPS_CIR": "${MBPS_CIR}"
+          }
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "virtual-circuit ethernet show circuit ${CIRCUIT_NAME}"
+        ]
+      }
+    },
+    {
+      "testName": "Delete All VLANs Reflector",
+      "testDescription": "Removes all VLAN reflector configurations.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "DeleteAllVlansReflector",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "vlan show",
+          "cfm reflector show"
+        ]
+      }
+    },
+    {
+      "testName": "Delete ELINE Service",
+      "testDescription": "Deletes an ELINE virtual circuit and associated configurations.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "DeleteELINE",
+          "scriptAttributes": {
+            "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+            "SVLAN": "${SVLAN}",
+            "NNI_PORT": "${NNI_PORT}",
+            "UNI_PORT": "${UNI_PORT}"
+          }
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "virtual-circuit ethernet show circuit ${CIRCUIT_NAME}"
+        ]
+      }
+    },
+    {
+      "testName": "Delete Untagged Reflector",
+      "testDescription": "Removes an untagged CFM reflector.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "DeleteUntaggedReflector",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "cfm reflector show"
+        ]
+      }
+    },
+    {
+      "testName": "Delete Y.1564 Untagged Test",
+      "testDescription": "Removes an untagged Y.1564 service activation test configuration.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "DeleteY1564Untagged",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat y1564 show"
+        ]
+      }
+    },
+    {
+      "testName": "Create ELINE Service with CFM",
+      "testDescription": "Creates an ELINE service with Connectivity Fault Management (CFM) MEPs.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ELINE",
+          "scriptAttributes": {
+            "SVLAN": "${SVLAN}",
+            "NNI_PORT": "${NNI_PORT}",
+            "UNI_PORT": "${UNI_PORT}",
+            "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+            "LOCAL_MEP": "${LOCAL_MEP}",
+            "REMOTE_MEP": "${REMOTE_MEP}",
+            "MBPS_CIR": "${MBPS_CIR}"
+          }
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "virtual-circuit ethernet show ",
+          "virtual-switch ethernet show "
+        ]
+      }
+    },
+    {
+      "testName": "Enable Port Loopback",
+      "testDescription": "Puts a specified port into a loopback state.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "LoopPort",
+          "scriptAttributes": {
+            "PORT": "${PORT}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "port show port ${PORT} detail"
+        ]
+      }
+    },
+    {
+      "testName": "Disable Port Loopback",
+      "testDescription": "Removes a loopback from a specified port.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "LoopPortOff",
+          "scriptAttributes": {
+            "PORT": "${PORT}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "port show port ${PORT} detail"
+        ]
+      }
+    },
+    {
+      "testName": "Enable Untagged Reflector",
+      "testDescription": "Configures a CFM reflector for untagged traffic on a specific port.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ReflectUntagged",
+          "scriptAttributes": {
+            "PORT": "${PORT}"
+          }
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "cfm reflector show"
+        ]
+      }
+    },
+    {
+      "testName": "Enable Reflector for All VLANs",
+      "testDescription": "Configures a CFM reflector for all VLANs on a specific port.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ReflectorAllVlans",
+          "scriptAttributes": {
+            "PORT": "${PORT}"
+          }
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "cfm reflector show"
+        ]
+      }
+    },
+    {
+      "testName": "Add UNI Port to ELINE",
+      "testDescription": "Adds a UNI (User-Network Interface) port to an existing ELINE service.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "AddUNIportToELINE",
+          "scriptAttributes": {
+            "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+            "UNI_PORT": "${UNI_PORT}",
+            "NNI_PORT": "${NNI_PORT}",
+            "MBPS_CIR": "${MBPS_CIR}"
+          }
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "virtual-circuit ethernet show circuit ${CIRCUIT_NAME}"
+        ]
+      }
+    },
+    {
+      "testName": "Remove UNI Port From ELINE",
+      "testDescription": "Removes a UNI port from an existing ELINE service.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "RemoveUNIportFromELINE",
+          "scriptAttributes": {
+            "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+            "UNI_PORT": "${UNI_PORT}"
+          }
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "virtual-circuit ethernet show circuit ${CIRCUIT_NAME}"
+        ]
+      }
+    },
+    {
+      "testName": "Run SAT for 3926",
+      "testDescription": "Executes a Service Activation Test (SAT) routine for a 3926 device.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "SAT3926",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat show"
+        ]
+      }
+    },
+    {
+      "testName": "Create VLINE Service",
+      "testDescription": "Creates a VLINE (VLAN-based) service.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "VLINE",
+          "scriptAttributes": {
+            "SVLAN": "${SVLAN}",
+            "NNI_PORT": "${NNI_PORT}",
+            "UNI_PORT": "${UNI_PORT}",
+            "SERVICE_NUMBER": "${SERVICE_NUMBER}",
+            "MBPS_CIR": "${MBPS_CIR}"
+          }
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "virtual-lan show vlan ${SVLAN}"
+        ]
+      }
+    },
+    {
+      "testName": "Run Y.1564 Untagged 15min Test",
+      "testDescription": "Executes a 15-minute Y.1564 service activation test on an untagged flow.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "Y1564Untagged15min",
+          "scriptAttributes": {
+            "UNI_PORT": "${UNI_PORT}",
+            "BANDWIDTH": "${BANDWIDTH}",
+            "DEST_MAC_ADDRESS": "${DEST_MAC_ADDRESS}"
+          }
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat y1564 show"
+        ]
+      }
+    },
+    {
+      "testName": "Apply LP Base Config",
+      "testDescription": "Applies a generic license-pool base configuration.",
+      "testType": "Setup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ApplyLPBaseCfg",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "chassis licensing show"
+        ]
+      }
+    },
+    {
+      "testName": "Apply LP Base Config for 3984",
+      "testDescription": "Applies a license-pool base configuration specific to the 3984 platform.",
+      "testType": "Setup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ApplyLPBase3984",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "chassis licensing show"
+        ]
+      }
+    },
+    {
+      "testName": "Set Bandwidth Mode to Payload",
+      "testDescription": "Configures bandwidth calculations to be based on L2 payload size.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "BWModeSetPayload",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "qos show"
+        ]
+      }
+    },
+    {
+      "testName": "Create CFM MDs",
+      "testDescription": "Creates default CFM Maintenance Domains (MDs).",
+      "testType": "Setup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "CreateMDs",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "cfm show maintenance-domain"
+        ]
+      }
+    },
+    {
+      "testName": "Delete ELINE Service with MD Level",
+      "testDescription": "Deletes an ELINE service, specifying the CFM Maintenance Domain level.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "DeleteELINE",
+          "scriptAttributes": {
+            "MD_LEVEL": "${MD_LEVEL}",
+            "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+            "UNI_PORT": "${UNI_PORT}",
+            "NNI_PORT": "${NNI_PORT}",
+            "SVLAN": "${SVLAN}"
+          }
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "virtual-circuit ethernet show circuit ${CIRCUIT_NAME}"
+        ]
+      }
+    },
+    {
+      "testName": "Delete RFC2544 Test",
+      "testDescription": "Removes an RFC2544 test configuration.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "DeleteRFC2544Test",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat rfc2544 show"
+        ]
+      }
+    },
+    {
+      "testName": "Disable Reflector",
+      "testDescription": "Disables a CFM reflector on a specified UNI port.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "DisableReflector",
+          "scriptAttributes": {
+            "UNI_PORT": "${UNI_PORT}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "cfm reflector show"
+        ]
+      }
+    },
+    {
+      "testName": "Disable Y.1564 Untagged Test",
+      "testDescription": "Disables an untagged Y.1564 service activation test.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "DisableY1564Untagged",
+          "scriptAttributes": {
+            "UNI_PORT": "${UNI_PORT}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat y1564 show"
+        ]
+      }
+    },
+    {
+      "testName": "Apply ELINE Config for 10x",
+      "testDescription": "Applies a predefined ELINE configuration template for 10x series devices.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ELINE-10x",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "virtual-circuit ethernet show"
+        ]
+      }
+    },
+    {
+      "testName": "Enroll Devices",
+      "testDescription": "Initiates the device enrollment process with a management system like MCP.",
+      "testType": "Setup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "EnrollDevices",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 5,
+      "verificationCommands": {
+        "PE-6x": [
+          "mcp show"
+        ]
+      }
+    },
+    {
+      "testName": "Enable Facility Loopback",
+      "testDescription": "Enables a facility (far-end) loopback on a port.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "FacilityLoopback",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "port show loopback"
+        ]
+      }
+    },
+    {
+      "testName": "Disable Facility Loopback",
+      "testDescription": "Disables a facility loopback on a specified port.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "FacilityLoopbackOff",
+          "scriptAttributes": {
+            "PORT": "${PORT}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "port show loopback port ${PORT}"
+        ]
+      }
+    },
+    {
+      "testName": "Apply KPI Profiles for 10x",
+      "testDescription": "Applies predefined Key Performance Indicator (KPI) profiles for 10x series devices.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "KPI-Profs-10x",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat kpi-profile show"
+        ]
+      }
+    },
+    {
+      "testName": "Set Port MTU Size",
+      "testDescription": "Configures the Maximum Transmission Unit (MTU) size on a port or interface.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "MTUsize",
+          "scriptAttributes": {
+            "MTU": "${MTU}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "port show mtu"
+        ]
+      }
+    },
+    {
+      "testName": "Set NTP Parameters",
+      "testDescription": "Configures NTP client parameters.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "NTPSetParam",
+          "scriptAttributes": {
+            "NTP_SERVER": "${NTP_SERVER}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "ntp client show"
+        ]
+      }
+    },
+    {
+      "testName": "Delete RFC2544",
+      "testDescription": "Deletes an RFC2544 test configuration.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "RFC2544Delete",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat rfc2544 show"
+        ]
+      }
+    },
+    {
+      "testName": "Setup Tagged RFC2544 Test",
+      "testDescription": "Sets up a tagged (VLAN) RFC2544 test.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "RFC2544SetupTagged",
+          "scriptAttributes": {
+            "UNI_PORT": "${UNI_PORT}",
+            "CVID": "${CVID}",
+            "DST_MAC": "${DST_MAC}",
+            "SRC_IP": "${SRC_IP}",
+            "DST_IP": "${DST_IP}",
+            "FP": "${FP}"
+          }
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat rfc2544 show"
+        ]
+      }
+    },
+    {
+      "testName": "Setup Untagged RFC2544 Test",
+      "testDescription": "Sets up an untagged RFC2544 test.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "RFC2544SetupUntagged",
+          "scriptAttributes": {
+            "UNI_PORT": "${UNI_PORT}",
+            "BANDWIDTH_MB": "${BANDWIDTH_MB}",
+            "DST_MAC": "${DST_MAC}",
+            "SRC_IP": "${SRC_IP}",
+            "DST_IP": "${DST_IP}",
+            "FP": "${FP}"
+          }
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat rfc2544 show"
+        ]
+      }
+    },
+    {
+      "testName": "Start RFC2544 Test",
+      "testDescription": "Starts a previously configured RFC2544 test.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "RFC2544Start",
+          "scriptAttributes": {
+            "UNI_PORT": "${UNI_PORT}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat rfc2544 show status"
+        ]
+      }
+    },
+    {
+      "testName": "Stop RFC2544 Test",
+      "testDescription": "Stops a running RFC2544 test.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "RFC2544Stop",
+          "scriptAttributes": {
+            "UNI_PORT": "${UNI_PORT}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat rfc2544 show status"
+        ]
+      }
+    },
+    {
+      "testName": "Enable SAT Reflector",
+      "testDescription": "Configures a port to act as a reflector for Service Activation Tests (SAT).",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "ReflectSAT",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat reflector show"
+        ]
+      }
+    },
+    {
+      "testName": "Remove NTP Server",
+      "testDescription": "Removes an NTP server from the configuration.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "RemoveNTPServer",
+          "scriptAttributes": {
+            "NTP_SERVER": "${NTP_SERVER}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "ntp client show"
+        ]
+      }
+    },
+    {
+      "testName": "Remove Reflector",
+      "testDescription": "Removes a CFM or SAT reflector configuration.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "RemoveReflector",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "cfm reflector show",
+          "sat reflector show"
+        ]
+      }
+    },
+    {
+      "testName": "Remove Y.1564 Untagged Test",
+      "testDescription": "Removes a Y.1564 untagged test configuration.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "RemoveY1564Untagged",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat y1564 show"
+        ]
+      }
+    },
+    {
+      "testName": "Set KPI Thresholds",
+      "testDescription": "Sets the Key Performance Indicator (KPI) thresholds for SAT tests (Throughput, Frame Loss, Latency, Jitter).",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "SetKPI",
+          "scriptAttributes": {
+            "THROUGHPUT_PERCENT": "${THROUGHPUT_PERCENT}",
+            "FRAMELOSS": "${FRAMELOSS}",
+            "LATENCY": "${LATENCY}",
+            "JITTER": "${JITTER}"
+          }
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat kpi-profile show"
+        ]
+      }
+    },
+    {
+      "testName": "Enable Terminal Loopback",
+      "testDescription": "Enables a terminal (near-end) loopback on a specified port.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "TerminalLoopback",
+          "scriptAttributes": {
+            "PORT": "${PORT}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "port show loopback port ${PORT}"
+        ]
+      }
+    },
+    {
+      "testName": "Disable Terminal Loopback",
+      "testDescription": "Disables a terminal loopback on a specified port.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "TerminalLoopbackOff",
+          "scriptAttributes": {
+            "PORT": "${PORT}"
+          }
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "port show loopback port ${PORT}"
+        ]
+      }
+    },
+    {
+      "testName": "Create VLINE Service with CFM",
+      "testDescription": "Creates a VLINE service with Connectivity Fault Management (CFM) MEPs.",
+      "testType": "Configuration",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "VLINE",
+          "scriptAttributes": {
+            "UNI_PORT": "${UNI_PORT}",
+            "SVLAN": "${SVLAN}",
+            "MBPS_CIR": "${MBPS_CIR}",
+            "CIRCUIT_NAME": "${CIRCUIT_NAME}",
+            "NNI_PORT": "${NNI_PORT}",
+            "LOCAL_MEP": "${LOCAL_MEP}",
+            "REMOTE_MEP": "${REMOTE_MEP}"
+          }
+        }
+      ],
+      "sleepTime": 3,
+      "verificationCommands": {
+        "PE-6x": [
+          "virtual-lan show vlan ${SVLAN}",
+          "cfm show service ${CIRCUIT_NAME}"
+        ]
+      }
+    },
+    {
+      "testName": "Remove Y.1564 Once-off Test",
+      "testDescription": "Removes a once-off Y.1564 test configuration.",
+      "testType": "Cleanup",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "Y1564OnceRemove",
+          "scriptAttributes": {}
+        }
+      ],
+      "sleepTime": 1,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat y1564 show"
+        ]
+      }
+    },
+    {
+      "testName": "Setup Y.1564 Once-off Test",
+      "testDescription": "Configures a single-run Y.1564 test.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "Y1564OnceSetup",
+          "scriptAttributes": {
+            "PORT": "${PORT}",
+            "DEST_MAC": "${DEST_MAC}",
+            "SRC_IP_ADDR": "${SRC_IP_ADDR}",
+            "DST_IP_ADDR": "${DST_IP_ADDR}",
+            "FLOW_PT_ID": "${FLOW_PT_ID}"
+          }
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat y1564 show"
+        ]
+      }
+    },
+    {
+      "testName": "Setup Y.1564 Tagged 15min Test",
+      "testDescription": "Configures a 15-minute Y.1564 test for tagged (VLAN) traffic.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "Y1564Setup15mTagged",
+          "scriptAttributes": {
+            "PORT": "${PORT}",
+            "BANDWIDTH_MBS": "${BANDWIDTH_MBS}",
+            "DEST_MAC": "${DEST_MAC}",
+            "FLOW_PT_GEN_PORT": "${FLOW_PT_GEN_PORT}",
+            "CVID": "${CVID}"
+          }
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat y1564 show"
+        ]
+      }
+    },
+    {
+      "testName": "Setup Y.1564 Untagged 15min Test",
+      "testDescription": "Configures a 15-minute Y.1564 test for untagged traffic.",
+      "testType": "Testing",
+      "customScripts": [
+        {
+          "deviceName": "PE-6x",
+          "cmdFile": "Y1564Setup15mUntagged",
+          "scriptAttributes": {
+            "PORT": "${PORT}",
+            "BANDWIDTH_MBS": "${BANDWIDTH_MBS}",
+            "DEST_MAC": "${DEST_MAC}",
+            "FLOW_PT_GEN_PORT": "${FLOW_PT_GEN_PORT}"
+          }
+        }
+      ],
+      "sleepTime": 2,
+      "verificationCommands": {
+        "PE-6x": [
+          "sat y1564 show"
+        ]
+      }
+    }
+  ]
+}

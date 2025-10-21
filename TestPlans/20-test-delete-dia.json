@@ -1,0 +1,45 @@
+{
+    "tests": [
+            {
+          "testName": "Delete DIA ",
+          "testDescription": "Delete DIA test between PE-6x and PE-10x.",
+          "testType": "DIA",
+
+          "customScripts": [
+              {
+                "deviceName": "PE-6x",
+                "cmdFile": "DeleteDIA",
+                "scriptAttributes": {
+                  "SVLAN": "77",
+                  "NNI_PORT": "11",
+                  "UNI_PORT": "5",
+                  "CIRCUIT_NAME": "DIA77",
+                  "SERVICE_NUMBER": "1"
+              }
+              },
+                            {
+                "deviceName": "PE-10x",
+                "cmdFile": "DeleteDIA",
+                "scriptAttributes": {
+                  "UNI_PORT": "5",
+                  "SVLAN": "77",
+                  "MBPS_CIR": "1000",
+                  "CIRCUIT_NAME": "DIA77",
+                  "NNI_PORT": "4"
+              }
+              }
+
+          ],
+          "sleepTime": 1,
+          "verificationCommands": {
+              "PE-6x": [
+                  "vlan show"
+              ],
+              "PE-10x": [
+                  "show run config section fps"
+              ]
+          }
+      }
+     
+    ]
+ }

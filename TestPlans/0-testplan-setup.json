@@ -1,0 +1,92 @@
+{
+    "tests": [
+              {
+            "testName": "Pre Setup",
+            "testDescription": "This test sets up config I need for these devices.",
+            "testType": "Setup",
+
+            "customScripts": [
+                 {
+                  "deviceName": "PE-6x",
+                  "cmdFile": "ShutOffInactivityTimer",
+                  "scriptAttributes": {
+                  }
+                },
+                {
+                  "deviceName": "PE-6x",
+                  "cmdFile": "SAT3928",
+                  "scriptAttributes": {
+                  }
+                }
+
+           ],
+           "sleepTime": 1,
+           "verificationCommands": {
+                "PE-6x": [
+                    "config search string inactivity",
+                    "config search string oam"
+                ]
+            }
+        },
+
+        {
+            "testName": "Initial Setup",
+            "testDescription": "This test sets up the 4 devices with the LP base config.",
+            "testType": "Setup",
+
+            "customScripts": [
+                {
+                  "deviceName": "PE-6x",
+                  "cmdFile": "ApplyLP3903BaseCAL",
+                  "scriptAttributes": {
+                        "NTP_SERVER": "10.92.44.130",
+                        "HOSTNAME": "PE-6x",
+                        "MCP_IP_ADDRESS": "10.1.75.217"
+                  }
+                },
+                {
+                  "deviceName": "PE-10x",
+                  "cmdFile": "ApplyLPBaseCfg",
+                  "scriptAttributes": {
+                  }
+                },
+                 {
+                  "deviceName": "CE-1",
+                  "cmdFile": "ApplyLPBase3984",
+                  "scriptAttributes": {
+                  }
+                },
+                {
+                  "deviceName": "CE-2",
+                  "cmdFile": "ApplyLPBase3984",
+                  "scriptAttributes": {}
+                 }
+           ],
+           "sleepTime": 1,
+           "verificationCommands": {
+                "PE-6x": [
+                    "l2-cft show profile CFT",
+                    "config search string max-frame-size",
+                    "user show",
+                    "port show"
+                ],
+                "PE-10x": [
+                    "show license",
+                    "show logical state",
+                    "show l2cp-profiles"
+                ],
+                "CE-1": [
+                    "show license",
+                    "show logical state",
+                    "show l2cp-profiles"
+                ],
+                "CE-2": [
+                    "show license",
+                    "show logical state",
+                    "show l2cp-profiles"
+                ]
+            }
+        }
+     
+    ]
+ }

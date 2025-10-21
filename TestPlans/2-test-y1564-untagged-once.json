@@ -1,0 +1,64 @@
+{
+    "tests": [
+        {
+          "testName": "Y1564 Test",
+          "testDescription": "Setup Y.1564 test between CE-1 and CE-2.  CE-2 is the reflector.",
+          "testType": "SAT",
+
+          "customScripts": [
+              {
+                "deviceName": "CE-2",
+                "cmdFile": "ReflectTaggedAndUntagged",
+                "scriptAttributes": {
+                  "UNI_PORT": "5",
+                  "FLOW_POINT": "FP_5_ELINE50"
+                }
+              },
+              {
+                "deviceName": "CE-1",
+                "cmdFile": "Y1564SetupOnceUntagged",
+                "scriptAttributes": {
+                  "UNI_PORT": "5",
+                  "BANDWIDTH_MBS": "1000",
+                  "DEST_NODE": "CE-2",
+                  "DEST_MAC": "SET_IN_CODE",
+                  "FLOW_PT_GEN_PORT": "FP_5_ELINE50"
+                }
+              }
+          ],
+          "sleepTime": 5,
+          "verificationCommands": {
+               "CE-1": [
+                  "show run config section sat"
+              ],
+              "CE-2": [
+                  "show run config section sat"
+              ]
+          }
+      },
+              {
+          "testName": "Start Y1564 Test",
+          "testDescription": "Start Y.1564 test between CE-1 and CE-2.  CE-2 is the reflector.",
+          "testType": "SAT",
+
+          "customScripts": [
+              {
+                "deviceName": "CE-1",
+                "cmdFile": "Y1564StartUntagged",
+                "scriptAttributes": {
+              }
+              }
+          ],
+          "sleepTime": 100,
+          "verificationCommands": {
+              "CE-2": [
+                  "sh sat test-instances statistics"
+              ],
+              "CE-1": [
+                  "sh sat test-instances test-instance genY1564Untagged statistics"
+              ]
+          }
+      }
+     
+    ]
+ }

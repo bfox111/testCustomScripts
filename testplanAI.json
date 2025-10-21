@@ -1,0 +1,72 @@
+{
+    "devices": {
+    "PE-6x": {
+      "attributes": {
+        "neName": "PE-6x",
+        "neType": "3928",
+        "typeGroup": "PN6x"
+      },
+      "ipAddress": "10.92.44.14",
+      "macAddress": "00:1A:2B:3C:4D:5E"
+    },
+    "PE-10x": {
+      "attributes": {
+        "neName": "PE-10x",
+        "neType": "5164",
+        "typeGroup": "PN10x"
+      },
+      "ipAddress": "10.92.44.71",
+      "macAddress": "00:1A:2B:3C:4D:5F"
+    },
+    "PE-10x": {
+      "attributes": {
+        "neName": "CE-1",
+        "neType": "3984",
+        "typeGroup": "PN10x"
+      },
+      "ipAddress": "10.92.44.16",
+      "macAddress": "00:1A:2B:3C:4D:5F"
+    },
+    "PE-10x": {
+      "attributes": {
+        "neName": "CE-2",
+        "neType": "3984",
+        "typeGroup": "PN10x"
+      },
+      "ipAddress": "10.92.44.13",
+      "macAddress": "00:1A:2B:3C:4D:5F"
+    }
+  },
+  "customScripts": [
+    {
+      "scriptName": "cliCutThrough",
+      "cmdFile": "ShutOffInactivityTimer",
+      "scriptAttributes": {
+        "NTP_SERVER": "10.92.44.130",
+        "HOSTNAME": "PE-6x",
+        "MCP_IP_ADDRESS": "10.92.44.121"
+      },
+      "protocolType": "cli"
+    },
+    {
+      "scriptName": "cliCutThrough",
+      "cmdFile": "ApplyLP3903BaseCAL",
+      "scriptAttributes": {
+        "NTP_SERVER": "10.92.44.131",
+        "HOSTNAME": "PE-7x",
+        "MCP_IP_ADDRESS": "10.92.44.122"
+      },
+      "protocolType": "cli"
+    }
+  ],
+  "verificationCommands": {
+    "PE-6x": [
+      "show cfm delay",
+      "show logical"
+    ],
+    "PE-7x": [
+      "show cfm delay",
+      "show logical"
+    ]
+  }
+}
