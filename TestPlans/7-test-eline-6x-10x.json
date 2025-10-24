@@ -2,54 +2,32 @@
     "tests": [
        {
           "testName": "ELINE",
-          "testDescription": "Setup ELINE between CE-1 and CE-2.  Set up VLINE on PE-6x and PE-10x. Run Y1564 test.",
+          "testDescription": "Setup ELINE between PE-6x and PE-10x.  Run Y1564 test.",
           "testType": "ELINE",
 
           "customScripts": [
-              {
+             {
                 "deviceName": "PE-6x",
-                "cmdFile": "VLINE",
-                "scriptAttributes": {
-                  "SVLAN": "50",
-                  "NNI_PORT": "11",
-                  "UNI_PORT": "10",
-                  "SERVICE_NUMBER": "1",
-                  "MBPS_CIR": "1000"
-                }
-              },
-              {
-                "deviceName": "PE-10x",
-                "cmdFile": "VLINE",
-                "scriptAttributes": {
-                  "UNI_PORT": "1",
-                  "SVLAN": "50",
-                  "MBPS_CIR": "1000",
-                  "CIRCUIT_NAME": "VLINE50",
-                  "NNI_PORT": "4"
-                }
-              },
-              {
-                "deviceName": "CE-1",
                 "cmdFile": "ELINE",
                 "scriptAttributes": {
                   "UNI_PORT": "5",
-                  "SVLAN": "50",
+                  "SVLAN": "610",
                   "MBPS_CIR": "1000",
                   "MD_LEVEL": "5",
-                  "CIRCUIT_NAME": "ELINE50",
+                  "CIRCUIT_NAME": "ELINE610",
                   "NNI_PORT": "1",
                   "LOCAL_MEP": "1",
                   "REMOTE_MEP": "2"
                 }
               },
               {
-                "deviceName": "CE-2",
+                "deviceName": "PE-10x",
                 "cmdFile": "ELINE",
                 "scriptAttributes": {
                   "UNI_PORT": "5",
-                  "SVLAN": "50",
+                  "SVLAN": "610",
                   "MBPS_CIR": "1000",
-                  "CIRCUIT_NAME": "ELINE50",
+                  "CIRCUIT_NAME": "ELINE610",
                   "NNI_PORT": "1",
                   "MD_LEVEL": "5",
                   "LOCAL_MEP": "2",
@@ -60,19 +38,10 @@
           "sleepTime": 5,
           "verificationCommands": {
               "PE-6x": [
-                  "vlan show",
-                  "port show"
+                  "cfm show delay",
+                  "cfm show synthetic"
               ],
               "PE-10x": [
-                  "show cfm delay",
-                  "show run config section fds"
-              ],
-              "CE-1": [
-                  "show cfm delay",
-                  "sh cfm synthetic-loss-measurement",
-                  "show run config section fds"
-              ],
-              "CE-2": [
                   "show cfm delay",
                   "sh cfm synthetic-loss-measurement",
                   "show run config section fds"
@@ -81,48 +50,48 @@
       },
         {
           "testName": "Y1564 Test",
-          "testDescription": "Setup Y.1564 test between CE-1 and CE-2.  CE-2 is the reflector.",
+          "testDescription": "Setup Y.1564 test between PE-6x and PE-10x.  PE-10x is the reflector.",
           "testType": "SAT",
 
           "customScripts": [
               {
-                "deviceName": "CE-2",
+                "deviceName": "PE-10x",
                 "cmdFile": "ReflectTaggedAndUntagged",
                 "scriptAttributes": {
                   "UNI_PORT": "5",
-                  "FLOW_POINT": "FP_5_ELINE50"
+                  "FLOW_POINT": "FP_5_ELINE610"
                 }
               },
               {
-                "deviceName": "CE-1",
+                "deviceName": "PE-6x",
                 "cmdFile": "Y1564SetupOnceUntagged",
                 "scriptAttributes": {
                   "UNI_PORT": "5",
                   "BANDWIDTH_MBS": "1000",
-                  "DEST_NODE": "CE-2",
+                  "DEST_NODE": "PE-10x",
                   "DEST_MAC": "SET_IN_CODE",
-                  "FLOW_PT_GEN_PORT": "FP_5_ELINE50"
+                  "FLOW_PT_GEN_PORT": "FP_5_ELINE610"
                 }
               }
           ],
           "sleepTime": 5,
           "verificationCommands": {
-               "CE-1": [
-                  "show run config section sat"
+               "PE-6x": [
+                  "config search string bench"
               ],
-              "CE-2": [
+              "PE-10x": [
                   "show run config section sat"
               ]
           }
       },
               {
           "testName": "Start Y1564 Test",
-          "testDescription": "Start Y.1564 test between CE-1 and CE-2.  CE-2 is the reflector.",
+          "testDescription": "Start Y.1564 test between PE-6x and PE-10x.  PE-10x is the reflector.",
           "testType": "SAT",
 
           "customScripts": [
               {
-                "deviceName": "CE-1",
+                "deviceName": "PE-6x",
                 "cmdFile": "Y1564StartUntagged",
                 "scriptAttributes": {
               }
@@ -130,11 +99,11 @@
           ],
           "sleepTime": 100,
           "verificationCommands": {
-              "CE-2": [
+              "PE-10x": [
                   "sh sat test-instances statistics"
               ],
-              "CE-1": [
-                  "sh sat test-instances test-instance genY1564Untagged statistics"
+              "PE-6x": [
+                  "bench test show name genTestUntaggedY1564 statistics"
               ]
           }
       },
@@ -145,14 +114,14 @@
 
           "customScripts": [
               {
-                "deviceName": "CE-2",
+                "deviceName": "PE-10x",
                 "cmdFile": "DisableReflector",
                 "scriptAttributes": {
                   "UNI_PORT": "5"
               }
               },
                             {
-                "deviceName": "CE-1",
+                "deviceName": "PE-6x",
                 "cmdFile": "Y1564DisableUntagged",
                 "scriptAttributes": {
                   "UNI_PORT": "5"
@@ -162,11 +131,11 @@
           ],
           "sleepTime": 1,
           "verificationCommands": {
-              "CE-2": [
+              "PE-10x": [
                   "show run config section sat"
               ],
-              "CE-1": [
-                  "show run config section sat"
+              "PE-6x": [
+                  "config search string bench"
               ]
           }
       },
@@ -177,13 +146,13 @@
 
           "customScripts": [
               {
-                "deviceName": "CE-2",
+                "deviceName": "PE-10x",
                 "cmdFile": "RemoveReflector",
                 "scriptAttributes": {
               }
               },
                             {
-                "deviceName": "CE-1",
+                "deviceName": "PE-6x",
                 "cmdFile": "Y1564DeleteUntagged",
                 "scriptAttributes": {
               }
@@ -192,11 +161,11 @@
           ],
           "sleepTime": 1,
           "verificationCommands": {
-              "CE-2": [
+              "PE-10x": [
                   "show run config section sat"
               ],
-              "CE-1": [
-                  "show run config section sat"
+              "PE-6x": [
+                  "config search string bench"
               ]
           }
       }

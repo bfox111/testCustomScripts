@@ -2905,3 +2905,216 @@ Response Body: {"data":[{"id":"dbfab9f8-c38a-4d30-8aa2-72844dfe26cf","type":"cus
 Custom Script 'Y1564SetupOnceUntagged' uploaded successfully!
 Response Body: {"data":[{"id":"e28cdb8b-0fad-42b6-863f-af60e97c501d","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564SetupOnceTagged","description":"YouTube: https://youtu.be/t5wnMfoeTDk  Setup Y.1564 test where you send Tagged traffic Once"}}]}
 Custom Script 'Y1564SetupOnceTagged' uploaded successfully!
+uploadCustomScripts <Navigator-IP-Address> <FileWithInfoOnScriptsToBeUploaded>
+Each line in the file should be: 
+ScriptName,productTypeGroup,protocolType,fileWithDirectoryStructure
+Usage:  uploadCustomScripts.py <NCS-IP-Addr> <file-with-custom-script-info>
+You need to specify the MCP/Navigator IP address
+Usage:  uploadCustomScripts.py <NCS-IP-Addr> <file-with-custom-script-info>
+Token created successfully!
+Response Body: {"data":[{"id":"e2fb326d-9c54-4e3e-a6e8-a7c29bb27f06","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"ShutOffInactivityTimer","description":"Turn off inactivity timer"}}]}
+Custom Script 'ShutOffInactivityTimer' uploaded successfully!
+Response Body: {"data":[{"id":"ed398aeb-a4e3-4e3b-9202-7a769a827c94","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"TurnOnInactivityTimer","description":"Turn on inactivity timer"}}]}
+Custom Script 'TurnOnInactivityTimer' uploaded successfully!
+Response Body: {"data":[{"id":"e8915291-e7ea-4932-b1b7-1822701dbbdf","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"SAT3926","description":"Setup 3926 to be able to run SAT tests"}}]}
+Custom Script 'SAT3926' uploaded successfully!
+Response Body: {"data":[{"id":"73ab6e28-2d59-403c-a138-281a5a9dfe7b","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"SAT3928","description":"Setup 3928 to be able to run SAT tests"}}]}
+Custom Script 'SAT3928' uploaded successfully!
+Response Body: {"data":[{"id":"0fc01803-dce1-4e86-8252-6935d05a5ca3","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"SAT3928","description":"Enable SAT on 3924"}}]}
+Custom Script 'SAT3928' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"cd39133d-4fc5-4cc8-8758-4c0f1d738cfd","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Apply3903BaseConfig","description":""}}]}
+Custom Script 'Apply3903BaseConfig' uploaded successfully!
+Response Body: {"data":[{"id":"8e6ffae1-b079-4e7f-8ea3-4ebcd478fd9a","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"ApplyLP3903BaseCAL","description":"Apply 3903 Base Config in CAL lab"}}]}
+Custom Script 'ApplyLP3903BaseCAL' uploaded successfully!
+Response Body: {"data":[{"id":"18e6b499-0b1d-463c-87a2-3ee1c846c65e","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"ApplyLPBaseCfg","description":"Apply LP Base Config in CAL lab"}}]}
+Custom Script 'ApplyLPBaseCfg' uploaded successfully!
+Response Body: {"data":[{"id":"4d5f5b82-e717-4844-9e0e-5763c2cd6cd4","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"ApplyLPBase3984","description":"Apply LP Base Config to 3984 in CAL lab"}}]}
+Custom Script 'ApplyLPBase3984' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"625c94e5-3fdd-458a-b859-765808bf3d36","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"SetEMIX","description":"Setup Lightpath EMIX Sequence test"}}]}
+Custom Script 'SetEMIX' uploaded successfully!
+Response Body: {"data":[{"id":"359edc20-df7b-417d-a78c-afa25de77421","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"SetEMIX","description":"Set EMIX sequence traffic for Lightpath tests"}}]}
+Custom Script 'SetEMIX' uploaded successfully!
+Response Body: {"data":[{"id":"6adb6c93-4c0e-43ca-9cee-9c5427323584","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"ChangeLightpathKPI","description":"Set KPIs for Lightpath test"}}]}
+Custom Script 'ChangeLightpathKPI' uploaded successfully!
+Response Body: {"data":[{"id":"e1651f41-3445-468e-be24-5f29cf250075","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"ChangeLightpathKPI","description":"Set KPIs for Lightpath test"}}]}
+Custom Script 'ChangeLightpathKPI' uploaded successfully!
+Response Body: {"data":[{"id":"6da14ab9-e4d8-4ad7-9b44-1f08f7c9d748","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"SetAllKPIProfiles","description":"Setup KPIs for all base SAT tests"}}]}
+Custom Script 'SetAllKPIProfiles' uploaded successfully!
+Response Body: {"data":[{"id":"ea2a9131-a641-4117-98b0-b2f16de9e7dc","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"SetAllKPIProfiles","description":"Setup KPIs for all base SAT tests"}}]}
+Custom Script 'SetAllKPIProfiles' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"ff87cf0d-a1fd-4a2b-8a98-b1e65687461c","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Cleanup3903Config","description":"\"After 3903 has been deployed"}}]}
+Custom Script 'Cleanup3903Config' uploaded successfully!
+Response Body: {"data":[{"id":"873f1049-d46a-4e36-b2d6-00e419a8560c","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Cleanup3924Config","description":"\"After 3924 has been deployed"}}]}
+Custom Script 'Cleanup3924Config' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"8f054e31-d1e0-47a4-856e-48f1d11d287d","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"AddNTPServer","description":"Set up NTP Server"}}]}
+Custom Script 'AddNTPServer' uploaded successfully!
+Response Body: {"data":[{"id":"08d5c94b-7cd9-49b5-9d23-cf67a7cc2253","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RemoveNTPServer","description":"Remove NTP Server"}}]}
+Custom Script 'RemoveNTPServer' uploaded successfully!
+Response Body: {"data":[{"id":"965b3ce4-8f60-46bc-9c54-95fadb0623a9","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"AddNTPServer","description":"Set NTP Server"}}]}
+Custom Script 'AddNTPServer' uploaded successfully!
+Response Body: {"data":[{"id":"6b881b1a-4826-464c-b175-f4aaffe4f42e","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"RemoveNTPServer","description":"Remove NTP Server"}}]}
+Custom Script 'RemoveNTPServer' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"e1337a5f-b12c-414c-a147-afd91435ec4a","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"SetMTU","description":"Set MTU size on 3903"}}]}
+Custom Script 'SetMTU' uploaded successfully!
+Response Body: {"data":[{"id":"e7cdbeb8-9b0c-4da2-b75c-29e65fd33d79","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"SetMTU","description":"Set MTU size on 3924"}}]}
+Custom Script 'SetMTU' uploaded successfully!
+Response Body: {"data":[{"id":"b251a817-e11d-47c7-ba79-9e886ece2b36","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"ConfigSave","description":"Save Configuration on a 6.x device"}}]}
+Custom Script 'ConfigSave' uploaded successfully!
+File not found: 
+File not found: 
+File not found: 
+File not found: 
+Response Body: {"data":[{"id":"e4373ec7-1ff8-4593-9e5f-aaef49ee718d","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"TerminalLoopback","description":"Turn Terminal Loopback on on port"}}]}
+Custom Script 'TerminalLoopback' uploaded successfully!
+Response Body: {"data":[{"id":"d9ac17cf-f504-4568-9682-0b952a2875be","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"TerminalLoopbackOff","description":"Turn Terminal Loopback off on port"}}]}
+Custom Script 'TerminalLoopbackOff' uploaded successfully!
+Response Body: {"data":[{"id":"bd3b90de-ed65-4a6e-ade6-7494b960fedd","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"LoopPort","description":"Loop Port - this needs to be tested on 3903"}}]}
+Custom Script 'LoopPort' uploaded successfully!
+Response Body: {"data":[{"id":"0b36b19e-ce99-421c-b7bb-ae415620f4b1","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"LoopPortOff","description":"Unloop port - this needs to be tested on 3903"}}]}
+Custom Script 'LoopPortOff' uploaded successfully!
+Response Body: {"data":[{"id":"ee51f5d6-8e18-4340-8960-4ed897af79de","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"FacilityLoopbackOn","description":"Set Facility Loopback on port"}}]}
+Custom Script 'FacilityLoopbackOn' uploaded successfully!
+Response Body: {"data":[{"id":"092866bf-ec16-46f8-9150-d2ea2050bf68","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"FacilityLoopbackOff","description":"Turn Facility Loopback off on port"}}]}
+Custom Script 'FacilityLoopbackOff' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"9577afea-dade-4bd8-9cbc-d87a8b6d9598","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"ReflectTaggedAndUntagged","description":"https://youtu.be/t5wnMfoeTDk  Reflect all tagged and untagged traffic sent to shared-mac MAC address found in  sh system mac command"}}]}
+Custom Script 'ReflectTaggedAndUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"4de83c2a-b2e6-450d-b0ee-f19dd6ff9dbb","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"ReflectUntagged","description":"Setup SAT Reflector for Untagged Traffic on UNI port.  Traffic will be sent to Benchmark MAC address found in chassis show mac command"}}]}
+Custom Script 'ReflectUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"6c9fe2ba-beef-4414-98a6-c035d59cbcc5","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"ReflectAllVlans","description":"Setup SAT Reflector for Tagged Traffic on UNI port. Traffic will be sent to Benchmark MAC address found in chassis show mac command"}}]}
+Custom Script 'ReflectAllVlans' uploaded successfully!
+Response Body: {"data":[{"id":"f33be997-8cd1-4345-be6a-e03953af34bb","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"DeleteAllVlansReflector","description":"Delete Reflector for All VLANS on UNI port"}}]}
+Custom Script 'DeleteAllVlansReflector' uploaded successfully!
+Response Body: {"data":[{"id":"dfc0b632-0f3a-498b-b11f-ea2564590edb","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"DeleteUntaggedReflector","description":"Delete Reflector for Untagged Services on UNI port"}}]}
+Custom Script 'DeleteUntaggedReflector' uploaded successfully!
+Response Body: {"data":[{"id":"5d2bba3a-c8cd-4209-b0af-33ecc9d8403d","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"DisableReflector","description":"Disable Reflector so it can be deleted on UNI port"}}]}
+Custom Script 'DisableReflector' uploaded successfully!
+Response Body: {"data":[{"id":"2c9c128c-b117-4916-85ff-926d6813ba64","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"RemoveReflector","description":"MUST DisableReflector FIRST.  Remove SAT Reflector on UNI port"}}]}
+Custom Script 'RemoveReflector' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"67b2fceb-4c16-4488-9302-8113dcd79fce","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"ELINE","description":"Set up ELINE/EPL service with CFM"}}]}
+Custom Script 'ELINE' uploaded successfully!
+Response Body: {"data":[{"id":"49f7a4f7-03d0-4685-91eb-a052dcb37be1","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"ELINE","description":"Set up ELINE/EPL service with CFM"}}]}
+Custom Script 'ELINE' uploaded successfully!
+Response Body: {"data":[{"id":"2c6bfd31-df13-4a79-bcf6-393c54949589","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"ELINEAddUNIport","description":"Add UNI port to existing EPL service"}}]}
+Custom Script 'ELINEAddUNIport' uploaded successfully!
+Response Body: {"data":[{"id":"3bb32904-f493-4ad7-ba1a-1dbfcbd7578e","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"ELINEAddUNIPort","description":"Add UNI port to existing EPL service"}}]}
+Custom Script 'ELINEAddUNIPort' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"7e941cd4-eb3f-4a3d-b521-26ffa4aa49a9","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"DeleteELINE","description":"Delete ELINE/EPL service with CFM"}}]}
+Custom Script 'DeleteELINE' uploaded successfully!
+Response Body: {"data":[{"id":"2497686a-18e7-444f-8d25-9985a82d1002","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"DeleteELINE","description":"Delete ELINE/EPL service with CFM"}}]}
+Custom Script 'DeleteELINE' uploaded successfully!
+Response Body: {"data":[{"id":"8c7e10f5-2c34-4e64-b310-40f2d6f1e854","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RemoveUNIportFromELINE","description":"Remove UNI port from existing ELINE service"}}]}
+Custom Script 'RemoveUNIportFromELINE' uploaded successfully!
+Response Body: {"data":[{"id":"f47dead0-db32-46ae-a83f-df3f900282cc","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"RemoveUNIportFromELINE","description":"Remove UNI port from existing ELINE service"}}]}
+Custom Script 'RemoveUNIportFromELINE' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"abebe605-5674-420b-a084-002aa1ad73fa","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"DIA","description":"Setup a DIA service"}}]}
+Custom Script 'DIA' uploaded successfully!
+Response Body: {"data":[{"id":"7c456823-467e-4a6c-ae1f-4aeff78b125b","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"DIA","description":"Create DIA Service"}}]}
+Custom Script 'DIA' uploaded successfully!
+Response Body: {"data":[{"id":"b0352f2f-531d-43fd-ba25-13c716490d38","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"DeleteDIA","description":"Delete DIA Service"}}]}
+Custom Script 'DeleteDIA' uploaded successfully!
+Response Body: {"data":[{"id":"5cda93be-f6d6-4534-90e7-8d304556d1c7","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"DeleteDIA","description":"Delete DIA Service"}}]}
+Custom Script 'DeleteDIA' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"28d5f7a5-7c9e-44c5-b31a-877832729a0f","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"VLINE","description":"Create VLINE Service"}}]}
+Custom Script 'VLINE' uploaded successfully!
+Response Body: {"data":[{"id":"86173c71-7421-4599-8489-9c79f642fefb","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"VLINE","description":"Setup VLINE service"}}]}
+Custom Script 'VLINE' uploaded successfully!
+Response Body: {"data":[{"id":"c6ae3418-dfe9-403f-9bf9-b462610f4ca7","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"VLINEwithCFM","description":"Setup VLINE service with CFM (10.x only)"}}]}
+Custom Script 'VLINEwithCFM' uploaded successfully!
+File not found: 
+File not found: 
+File not found: 
+File not found: 
+Response Body: {"data":[{"id":"ee68e0ff-0bc4-4b81-8117-03522be89e77","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"DeleteVLINE","description":"Delete VLINE Service"}}]}
+Custom Script 'DeleteVLINE' uploaded successfully!
+Response Body: {"data":[{"id":"deaeb932-02f6-4029-b565-d21b8628c103","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"DeleteVLINE","description":"Delete VLINE (VLAN switched) service"}}]}
+Custom Script 'DeleteVLINE' uploaded successfully!
+Response Body: {"data":[{"id":"2ba7fe88-40ec-439d-9d8e-2b8f1ea95fac","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"DeleteVLINEwithCFM","description":"Delete VLINE (VLAN switched) service with CFM (10x only)"}}]}
+Custom Script 'DeleteVLINEwithCFM' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"d5b3bd87-7881-4783-ab78-ba6c0fc8a4d2","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564Setup15mTagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y.1564 test where you send Tagged traffic for 15 minutes"}}]}
+Custom Script 'Y1564Setup15mTagged' uploaded successfully!
+Response Body: {"data":[{"id":"80d47b93-c2cf-4e5c-b816-de9d9480c4e1","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564Setup15mUntagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y.1564 test where you send Untagged traffic for 15 minutes"}}]}
+Custom Script 'Y1564Setup15mUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"c8169739-ac57-457e-a236-2eb010279c2c","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564SetupOnceUntagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y.1564 test where you send untagged traffic Once"}}]}
+Custom Script 'Y1564SetupOnceUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"957fd5d6-81fa-4b22-a8c5-7063ab3841c3","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564SetupOnceTagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y.1564 test where you send Tagged traffic Once"}}]}
+Custom Script 'Y1564SetupOnceTagged' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"5d5dbfe4-4678-4b18-ba1c-b94688f4b30d","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Y1564Setup15mUntagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y1564 untagged service to run once"}}]}
+Custom Script 'Y1564Setup15mUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"fc632e50-1578-41b4-92c2-69752ec8182c","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Y1564Setup15mTagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y1564 untagged service to run once"}}]}
+Custom Script 'Y1564Setup15mTagged' uploaded successfully!
+Response Body: {"data":[{"id":"3caafc8c-5a72-47db-9553-a4380e92a312","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Y1564SetupOnceUntagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y1564 untagged service to run once"}}]}
+Custom Script 'Y1564SetupOnceUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"e05f4569-1f20-4d34-b97f-6d8633e1b10a","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Y1564SetupOnceTagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y1564 untagged service to run once"}}]}
+Custom Script 'Y1564SetupOnceTagged' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"7455cda0-3c80-4646-81cb-4d139c94208b","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Y1564StartUntagged","description":"https://youtu.be/t5wnMfoeTDk  Start Y1564 untagged service"}}]}
+Custom Script 'Y1564StartUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"56d3c60f-349f-48e7-8a87-2a25e70833a2","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564StartUntagged","description":"Start a Y1564 Untagged test"}}]}
+Custom Script 'Y1564StartUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"eb05544d-91ec-444a-a31e-58601eb77465","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564StartTagged","description":"https://youtu.be/t5wnMfoeTDk  Start a Y1564 tagged test"}}]}
+Custom Script 'Y1564StartTagged' uploaded successfully!
+Response Body: {"data":[{"id":"24742e16-76ab-49d6-b0ef-4c685c39ca33","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Y1564StartTagged","description":"https://youtu.be/t5wnMfoeTDk  Start Y1564 untagged service"}}]}
+Custom Script 'Y1564StartTagged' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"03bb1d0d-c04a-4473-bbad-9b30368b0c06","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564StopUntagged","description":"Stop a Y1564 Untagged test"}}]}
+Custom Script 'Y1564StopUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"be8d79c6-d2e3-4b46-ae7d-928f5c98d228","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564StopTagged","description":"Stop a Y1564 tagged test"}}]}
+Custom Script 'Y1564StopTagged' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"b9e76612-7634-4250-8e44-8bafe6935487","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Y1564DeleteUntagged","description":"Delete Y1564 Untagged Test and Generator"}}]}
+Custom Script 'Y1564DeleteUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"1b68f8d9-173c-4115-8981-a5b0e38b1548","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"Y1564DeleteTagged","description":"Delete Y1564 Untagged Test and Generator"}}]}
+Custom Script 'Y1564DeleteTagged' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"73502815-8a28-4a4a-9e91-3b31a5963d65","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564DisableUntagged","description":"Disable Y1564 Untagged test so it can be deleted"}}]}
+Custom Script 'Y1564DisableUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"3cda7e97-2e57-4963-9b65-22ddb2ad2f87","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564DisableTagged","description":"Disable Y1564 tagged test so it can be deleted"}}]}
+Custom Script 'Y1564DisableTagged' uploaded successfully!
+File not found: 
+Response Body: {"data":[{"id":"178f3fec-93d8-4ba8-a403-75bc2d5f1ab8","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564DeleteUntagged","description":"MUST Y1564DisableUntagged FIRST.  Delete Y1564 Untagged test and generator"}}]}
+Custom Script 'Y1564DeleteUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"1b6f6dce-a5ec-4f64-b4d7-d4a0467c7099","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"Y1564DeleteTagged","description":"MUST Y1564DisableTagged FIRST.  Delete Y1564 Tagged test and generator"}}]}
+Custom Script 'Y1564DeleteTagged' uploaded successfully!
+File not found: 
+File not found: 
+File not found: /mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/10x/DeleteRFC2544Test.txt
+File not found: 
+File not found: /mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/10x/RFC2544Delete.txt
+Response Body: {"data":[{"id":"acede2ff-ffe7-4853-aec2-a8be395c9dfe","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"RFC2544SetupTagged","description":"Setup RFC2544 Test for Tagged Traffic"}}]}
+Custom Script 'RFC2544SetupTagged' uploaded successfully!
+Response Body: {"data":[{"id":"3ad7cfef-bb80-4aaf-9729-d0a73033a9cf","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"RFC2544SetupUntagged","description":"Setup RFC2544 Test for Untagged Traffic"}}]}
+Custom Script 'RFC2544SetupUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"a0395db7-31c0-490f-8b29-7e47bcab725a","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"RFC2544Start","description":"Start RFC2544 Test"}}]}
+Custom Script 'RFC2544Start' uploaded successfully!
+Response Body: {"data":[{"id":"203e7611-db30-4bcc-91f7-1f3350d52ef5","type":"customScript","attributes":{"typeGroup":"PN10x","protocolType":"netconf","scriptName":"RFC2544Stop","description":"Stop RFC2544 Test"}}]}
+Custom Script 'RFC2544Stop' uploaded successfully!
+File not found: 
+File not found: 
+Response Body: {"data":[{"id":"a60455bc-74b2-462a-8399-c2a6d55ca110","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RFC2544Setup15mUntagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y1564 untagged service to run once"}}]}
+Custom Script 'RFC2544Setup15mUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"0862ccb7-08f4-4a40-b2eb-479c3336cc00","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RFC2544Setup15mTagged","description":"https://youtu.be/t5wnMfoeTDk  Setup Y1564 untagged service to run once"}}]}
+Custom Script 'RFC2544Setup15mTagged' uploaded successfully!
+Response Body: {"data":[{"id":"e305230d-e260-4e4d-a6d1-c089caa7da03","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RFC2544StartUntagged","description":"https://youtu.be/t5wnMfoeTDk  Start Y1564 untagged service"}}]}
+Custom Script 'RFC2544StartUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"44810a41-a461-488f-8539-c0a8c1d143d4","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RFC2544StartTagged","description":"https://youtu.be/t5wnMfoeTDk  Start Y1564 untagged service"}}]}
+Custom Script 'RFC2544StartTagged' uploaded successfully!
+Response Body: {"data":[{"id":"436154b2-5901-4dc1-9f12-02feaefd0890","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RFC2544StopUntagged","description":"https://youtu.be/t5wnMfoeTDk  Start Y1564 untagged service"}}]}
+Custom Script 'RFC2544StopUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"b31b639a-3c90-40d3-adbc-dbafd81357c2","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RFC2544StopTagged","description":"https://youtu.be/t5wnMfoeTDk  Start Y1564 untagged service"}}]}
+Custom Script 'RFC2544StopTagged' uploaded successfully!
+Response Body: {"data":[{"id":"6d584025-6840-4450-ae88-f21d6af7be08","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RFC2544DeleteUntagged","description":"Delete RFC2544 Test"}}]}
+Custom Script 'RFC2544DeleteUntagged' uploaded successfully!
+Response Body: {"data":[{"id":"077b4a81-3dd8-43b0-bc0f-17487cb0a87a","type":"customScript","attributes":{"typeGroup":"PN6x","protocolType":"cli","scriptName":"RFC2544DeleteTagged","description":"Delete RFC2544 Test"}}]}
+Custom Script 'RFC2544DeleteTagged' uploaded successfully!

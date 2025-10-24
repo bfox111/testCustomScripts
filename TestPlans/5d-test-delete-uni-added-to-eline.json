@@ -1,0 +1,43 @@
+{
+    "tests": [
+
+            {
+          "testName": "Delete UNI Port added to ELINE ",
+          "testDescription": "Delete UNI port added to ELINE between CE-1 and CE-2.  ",
+          "testType": "SAT",
+
+          "customScripts": [
+              {
+                "deviceName": "CE-2",
+                "cmdFile": "RemoveUNIportFromELINE",
+                "scriptAttributes": {
+                  "UNI_PORT": "6",
+                  "CIRCUIT_NAME": "ELINE50"
+              }
+              },
+                            {
+                "deviceName": "CE-1",
+                "cmdFile": "RemoveUNIportFromELINE",
+                "scriptAttributes": {
+                  "UNI_PORT": "6",
+                    "CIRCUIT_NAME": "ELINE50"
+
+            }
+              }
+
+          ],
+          "sleepTime": 1,
+          "verificationCommands": {
+              "CE-2": [
+                  "show run config section fps"
+              ],
+              "CE-1": [
+                  "show run config section fps"
+              ]
+          }
+      }
+
+
+     
+    ]
+ }

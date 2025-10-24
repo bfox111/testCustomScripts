@@ -1,0 +1,43 @@
+{
+    "tests": [
+       {
+          "testName": "ELINE-Add-UNI",
+          "testDescription": "Add UNI port to ELINE between CE-1 and CE-2.",
+          "testType": "ELINE",
+
+          "customScripts": [
+              {
+                "deviceName": "CE-1",
+                "cmdFile": "ELINEAddUNIPort",
+                "scriptAttributes": {
+                  "FIRST_UNI_PORT": "5",
+                  "UNI_PORT": "6",
+                  "SVLAN": "50",
+                  "MBPS_CIR": "1000",
+                  "CIRCUIT_NAME": "ELINE50"
+                }
+              },
+              {
+                "deviceName": "CE-2",
+                "cmdFile": "ELINEAddUNIPort",
+                "scriptAttributes": {
+                 "FIRST_UNI_PORT": "5",
+                  "UNI_PORT": "6",
+                  "SVLAN": "50",
+                  "MBPS_CIR": "1000",
+                  "CIRCUIT_NAME": "ELINE50"
+                }
+              }
+          ],
+          "sleepTime": 5,
+          "verificationCommands": {
+              "CE-1": [
+                  "show flow"
+              ],
+              "CE-2": [
+                  "show flow"
+              ]
+          }
+      }
+    ]
+ }

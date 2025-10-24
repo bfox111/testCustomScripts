@@ -15,7 +15,7 @@
               },
                             {
                 "deviceName": "CE-1",
-                "cmdFile": "DisableY1564Tagged",
+                "cmdFile": "Y1564DisableTagged",
                 "scriptAttributes": {
                   "UNI_PORT": "5"
               }
@@ -46,7 +46,7 @@
               },
                             {
                 "deviceName": "CE-1",
-                "cmdFile": "Y1564RemoveTagged",
+                "cmdFile": "Y1564DeleteTagged",
                 "scriptAttributes": {
               }
               }

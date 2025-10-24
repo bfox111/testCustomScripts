@@ -1,0 +1,43 @@
+{
+    "tests": [
+       {
+          "testName": "ELINE-Add-UNI",
+          "testDescription": "Add UNI port to ELINE between PE-6x and PE-10x.",
+          "testType": "ELINE",
+
+          "customScripts": [
+              {
+                "deviceName": "PE-6x",
+                "cmdFile": "ELINEAddUNIPort",
+                "scriptAttributes": {
+                  "FIRST_UNI_PORT": "5",
+                  "UNI_PORT": "6",
+                  "SVLAN": "610",
+                  "MBPS_CIR": "1000",
+                  "CIRCUIT_NAME": "ELINE610"
+                }
+              },
+              {
+                "deviceName": "PE-10x",
+                "cmdFile": "ELINEAddUNIPort",
+                "scriptAttributes": {
+                 "FIRST_UNI_PORT": "5",
+                  "UNI_PORT": "6",
+                  "SVLAN": "610",
+                  "MBPS_CIR": "1000",
+                  "CIRCUIT_NAME": "ELINE610"
+                }
+              }
+          ],
+          "sleepTime": 5,
+          "verificationCommands": {
+              "PE-6x": [
+                  "virtual-circuit ethernet show"
+              ],
+              "PE-10x": [
+                  "show flow"
+              ]
+          }
+      }
+    ]
+ }

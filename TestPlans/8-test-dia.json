@@ -131,7 +131,7 @@
           "customScripts": [
               {
                 "deviceName": "PE-6x",
-                "cmdFile": "DeleteAllVlansReflector",
+                "cmdFile": "DeleteUntaggedReflector",
                 "scriptAttributes": {
               }
               },

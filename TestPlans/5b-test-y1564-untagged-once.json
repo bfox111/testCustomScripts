@@ -10,21 +10,20 @@
                 "deviceName": "CE-2",
                 "cmdFile": "ReflectTaggedAndUntagged",
                 "scriptAttributes": {
-                  "UNI_PORT": "5",
-                  "FLOW_POINT": "FP_5_ELINE50"
+                  "UNI_PORT": "6",
+                  "FLOW_POINT": "FP_6_ELINE50"
                 }
               },
               {
                 "deviceName": "CE-1",
-                "cmdFile": "Y1564SetupOnceTagged",
+                "cmdFile": "Y1564SetupOnceUntagged",
                 "scriptAttributes": {
-                  "UNI_PORT": "5",
+                  "UNI_PORT": "6",
                   "BANDWIDTH_MBS": "1000",
                   "DEST_NODE": "CE-2",
                   "DEST_MAC": "SET_IN_CODE",
-		  "CVID": "222",
-		  "FLOW_PT_GEN_PORT": "FP_5_ELINE50"
-		}
+                  "FLOW_PT_GEN_PORT": "FP_6_ELINE50"
+                }
               }
           ],
           "sleepTime": 5,
@@ -45,7 +44,7 @@
           "customScripts": [
               {
                 "deviceName": "CE-1",
-                "cmdFile": "Y1564StartTagged",
+                "cmdFile": "Y1564StartUntagged",
                 "scriptAttributes": {
               }
               }
@@ -56,7 +55,7 @@
                   "sh sat test-instances statistics"
               ],
               "CE-1": [
-                  "sh sat test-instances test-instance genY1564Tagged statistics"
+                  "sh sat test-instances test-instance genY1564Untagged statistics"
               ]
           }
       }

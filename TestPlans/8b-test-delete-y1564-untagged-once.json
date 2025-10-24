@@ -2,50 +2,42 @@
     "tests": [
       {
           "testName": "Disable Y1564 ",
-          "testDescription": "Disable Y.1564 test between CE-1 and CE-2.  CE-2 is the reflector.",
+          "testDescription": "Disable Y.1564 test between PE-6x and PE-10x.  PE-10x is the reflector.",
           "testType": "SAT",
 
           "customScripts": [
               {
-                "deviceName": "CE-2",
+                "deviceName": "PE-10x",
                 "cmdFile": "DisableReflector",
                 "scriptAttributes": {
                   "UNI_PORT": "5"
               }
-              },
-                            {
-                "deviceName": "CE-1",
-                "cmdFile": "Y1564DisableUntagged",
-                "scriptAttributes": {
-                  "UNI_PORT": "5"
               }
-              }
-
           ],
           "sleepTime": 1,
           "verificationCommands": {
-              "CE-2": [
+              "PE-10x": [
                   "show run config section sat"
               ],
-              "CE-1": [
-                  "show run config section sat"
+              "PE-6x": [
+                  "config search string bench"
               ]
           }
       },
       {
           "testName": "Delete Y1564 ",
-          "testDescription": "Delete Y.1564 test between CE-1 and CE-2.  CE-2 is the reflector.",
+          "testDescription": "Delete Y.1564 test between PE-6x and PE-10x.  PE-10x is the reflector.",
           "testType": "SAT",
 
           "customScripts": [
               {
-                "deviceName": "CE-2",
+                "deviceName": "PE-10x",
                 "cmdFile": "RemoveReflector",
                 "scriptAttributes": {
               }
               },
                             {
-                "deviceName": "CE-1",
+                "deviceName": "PE-6x",
                 "cmdFile": "Y1564DeleteUntagged",
                 "scriptAttributes": {
               }
@@ -54,11 +46,11 @@
           ],
           "sleepTime": 1,
           "verificationCommands": {
-              "CE-2": [
+              "PE-10x": [
                   "show run config section sat"
               ],
-              "CE-1": [
-                  "show run config section sat"
+              "PE-6x": [
+                  "config search string bench"
               ]
           }
       }

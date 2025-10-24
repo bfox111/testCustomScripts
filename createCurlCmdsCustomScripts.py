@@ -3,7 +3,7 @@
 """
 Author: Barbara A. Fox <bfox@ciena.com>
 
-Upload custom scripts to a particular Navigator.
+Create CURL commands to Upload custom scripts to a particular Navigator.
 
 Lots of help from Harry Solomou  And ChatGPT!
 """
@@ -13,10 +13,11 @@ import requests
 import time
 import os
 
-# mcp = "10.92.44.121"
-mcp = "10.75.1.199"
+mcp = "10.92.44.121"
+# mcp = "10.75.1.239"
 # custom_scripts_file = "/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/uploadCustomScripts.txt"
 custom_scripts_file = "/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/LPCustomScripts.csv"
+curl_file = "/mnt/c/Users/bfox/OneDrive - Ciena Corporation/Documents/Customers/Lightpath/NCS-Customize/curl_commands.txt"
 
 # Global variable to store the token and its expiration time
 token_info = {
@@ -63,45 +64,6 @@ def get_token(mcp):
     create_token(mcp)
     return token_info["token"]
 
-def upload_script(mcp, productType, protocolType, scriptName, description, file_path):
-    """
-    Upload a custom script to Navigator.
-    """
-    url = f"https://{mcp}/configmgmt/api/v1/customScripts"
-    token = get_token(mcp)
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "accept": "application/json"
-    }
-
-    data = {
-        "typeGroup": productType,
-        "protocolType": protocolType,
-        "scriptName": scriptName,
-        "description": description
-    }
-
-    try:
-        if not os.path.exists(file_path):
-            print(f"File not found: {file_path}")
-            return
-
-        with open(file_path, "rb") as file:
-            # Match multipart/form-data structure from curl
-            files = {
-                "file": (os.path.basename(file_path), file, "text/plain")
-            }
-            response = requests.post(url, headers=headers, data=data, files=files, verify=False)
-
-            # Print the response body for debugging
-            print(f"Response Body: {response.text}")
-
-            if response.status_code in [200, 201]:  # Adjusted success check
-                print(f"Custom Script '{scriptName}' uploaded successfully!")
-            else:
-                print(f"Failed to upload script '{scriptName}': {response.status_code}, {response.text}")
-    except requests.RequestException as e:
-        print(f"Error uploading script '{scriptName}': {e}")
         
         
 def main():
@@ -133,6 +95,9 @@ def main():
             print(f"Scripts file not found: {scripts_file}")
             return
 
+        curl_cmds = open(curl_file, 'w')
+        bearer_token = get_token(mcp_ip)
+
         with open(scripts_file, 'r') as scripts:
             for line in scripts:
                 parsed_line = line.strip().split(',')
@@ -146,10 +111,15 @@ def main():
                 file_path = parsed_line[3].strip()
                 description = parsed_line[4].strip() if len(parsed_line) > 4 else ""
 
-                upload_script(mcp_ip, productType, protocolType, name, description, file_path)
-                time.sleep(2)  # Optional delay between uploads
+                curl_line = f"curl -X POST https://{mcp_ip}/configmgmt/api/v1/customScripts -H 'accept: application/json' -H 'Authorization: Bearer {bearer_token}' -H 'Content-Type: multipart/form-data' -F 'typeGroup={productType}' -F 'protocolType={protocolType}' -F 'scriptName={name}' -F 'description={description}' -F 'file=@{file_path};type=text/plain' -k"
+
+                curl_cmds.write(curl_line + "\n")
+
     except Exception as e:
         print(f"Error processing scripts file: {e}")
+        
+    curl_cmds.close()
+
 
 if __name__ == "__main__":
     main()

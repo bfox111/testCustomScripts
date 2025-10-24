@@ -2,26 +2,27 @@
     "tests": [
         {
           "testName": "Y1564 Test",
-          "testDescription": "Setup Y.1564 test between PE-6x and PE-10x.  PE-10x is the reflector.",
+          "testDescription": "Setup RFC2544 test between PE-6x and PE-10x.  PE-6x is the reflector.",
           "testType": "SAT",
 
           "customScripts": [
               {
-                "deviceName": "PE-10x",
-                "cmdFile": "ReflectTaggedAndUntagged",
+                "deviceName": "PE-6x",
+                "cmdFile": "ReflectUntagged",
                 "scriptAttributes": {
-                  "UNI_PORT": "5",
-                  "FLOW_POINT": "FP_5_DIA77"
+                  "PORT": "5"
                 }
               },
               {
-                "deviceName": "PE-6x",
+                "deviceName": "PE-10x",
                 "cmdFile": "Y1564SetupOnceTagged",
                 "scriptAttributes": {
                   "UNI_PORT": "5",
                   "BANDWIDTH_MB": "1000",
-                  "DEST_NODE": "PE-10x",
-                  "CVLAN" : "106",
+                  "DST_IP": "10.92.44.43",
+                  "SRC_IP": "10.92.44.72",
+                  "FP" : "FP_5_DIA77",
+                  "DEST_NODE": "PE-6x",
                   "DEST_MAC": "SET_IN_CODE"
                 }
               }
@@ -38,13 +39,13 @@
       },
               {
           "testName": "Start Y1564 Test",
-          "testDescription": "Start Y.1564 test between PE-6x and PE-10x.  PE-10x is the reflector.",
+          "testDescription": "Start Y.1564 test between PE-6x and PE-10x.  PE-6x is the reflector.",
           "testType": "SAT",
 
           "customScripts": [
               {
-                "deviceName": "PE-6x",
-                "cmdFile": "Y1564StartTagged",
+                "deviceName": "PE-10x",
+                "cmdFile": "RFC2544StartUntagged",
                 "scriptAttributes": {
               }
               }
@@ -52,10 +53,10 @@
           "sleepTime": 100,
           "verificationCommands": {
               "PE-10x": [
-                  "sh sat test-instances statistics"
+                  "sh sat test-instances test-instance genY1564Untagged statistics"
               ],
               "PE-6x": [
-                  "bench test show name genTestTaggedY1564 statistics"
+                  "bench test show name genTestUntaggedY1564 statistics"
               ]
           }
       }
